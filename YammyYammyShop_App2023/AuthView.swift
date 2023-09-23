@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct ContentView: View {
+struct AuthView: View {
     
     @State private var isAuth = true
     
@@ -59,7 +59,15 @@ struct ContentView: View {
                 }
                 
                 Button {
-                    print("Authorization")
+                    if isAuth {
+                        print("Authorization")
+                    } else {
+                        print("Registration")
+                        self.email = ""
+                        self.password = ""
+                        self.confirmPassword = ""
+                        self.isAuth.toggle()
+                    }
                 } label: {
                     Text(isAuth ? "Enter" : "Create account")
                         .font(.title2.bold())
@@ -93,12 +101,12 @@ struct ContentView: View {
             
         }.frame(maxWidth: .infinity,  maxHeight: .infinity)
             .background(Image("yammyBG").ignoresSafeArea()
-                .blur(radius: isAuth ? 0 : 6)
+                .blur(radius: isAuth ? 0 : 7)
             )
-            .animation(Animation.easeInOut(duration: 0.4), value: isAuth)
+            .animation(Animation.easeInOut(duration: 0.5), value: isAuth)
     }
 }
 
 #Preview {
-    ContentView()
+    AuthView()
 }
