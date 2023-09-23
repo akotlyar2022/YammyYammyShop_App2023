@@ -15,6 +15,8 @@ struct AuthView: View {
     @State private var password = ""
     @State private var confirmPassword = ""
     
+    @State private var isTabViewShow = false
+    
     var body: some View {
         VStack(spacing: 48) {
             Text("YammyYammy")
@@ -60,7 +62,8 @@ struct AuthView: View {
                 
                 Button {
                     if isAuth {
-                        print("Authorization")
+                        print("Client authorization throw Firebase ")
+                        isTabViewShow.toggle()
                     } else {
                         print("Registration")
                         self.email = ""
@@ -104,6 +107,9 @@ struct AuthView: View {
                 .blur(radius: isAuth ? 0 : 7)
             )
             .animation(Animation.easeInOut(duration: 0.5), value: isAuth)
+            .fullScreenCover(isPresented: $isTabViewShow) {
+                MainTapBar()
+            }
     }
 }
 
