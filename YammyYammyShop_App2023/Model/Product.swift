@@ -11,7 +11,7 @@ struct Product {
     var id: String
     var title: String
     var imageUrl: String
-    var price: Int
+    var price: Double
     var description: String
     
     //var ordersCount: Int

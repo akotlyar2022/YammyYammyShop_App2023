@@ -6,3 +6,38 @@
 //
 
 import Foundation
+
+class CatalogViewModel: ObservableObject {
+    
+    static let shared = CatalogViewModel()
+    
+    var popularProducts = [
+        Product(id: "001",
+                title: "Orange",
+                imageUrl: "NotFound",
+                price: 2.0,
+                description: "Best oranges in Georgia. Grow up in region Ajara. Very very very tasty!"),
+        Product(id: "002",
+                title: "Mandarin",
+                imageUrl: "NotFound",
+                price: 1.0,
+                description: "Best mandarines in Georgia. Grow up in region Ajara. Very very very tasty!"),
+        Product(id: "003",
+                title: "Grapefruit",
+                imageUrl: "NotFound",
+                price: 3.0,
+                description: "Best grapefruits in Georgia. Grow up in region Ajara. Very very very tasty!"),
+        Product(id: "004",
+                title: "Kiwi",
+                imageUrl: "NotFound",
+                price: 2.0,
+                description: "Best kiwi in Georgia. Grow up in region Ajara. Very very very tasty!"),
+        Product(id: "005",
+                title: "Banana",
+                imageUrl: "NotFound",
+                price: 1.5,
+                description: "Best banana in Georgia. Grow up in region Ajara. Very very very tasty!")
+    
+    ]
+    
+}

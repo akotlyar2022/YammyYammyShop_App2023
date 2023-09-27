@@ -13,7 +13,7 @@ struct MWUser: Identifiable {
     var phone: Int
     var adress: String
     
-    var representation = [String: Any] {
+    var representation: [String: Any] {
         var repres = [String: Any]()
         repres["id"] = self.id
         repres["name"] = self.name

@@ -8,23 +8,31 @@
 import SwiftUI
 
 struct MainTapBar: View {
+    
+    var viewModel: MainTapBarViewModel
+    
     var body: some View {
         TabView {
-            CatalogView()
+            NavigationView {
+                CatalogView()
+            }
                 .tabItem {
                     VStack {
                         Image(systemName: "list.bullet.circle")
                         Text("Catalog")
                     }
                 }
-            CartView()
+            CartView(viewModel: CartViewModel.shared)
                 .tabItem {
                     VStack {
                         Image(systemName: "cart")
                         Text("Cart")
                     }
                 }
-            ProfileView()
+            ProfileView(viewModel: ProfileViewModel(profile: MWUser(id: "",
+                                                                      name: "Name",
+                                                                      phone: 380503180045,
+                                                                      adress: "Adress")))
                 .tabItem {
                     VStack {
                         Image(systemName: "person.crop.circle")
@@ -35,6 +43,8 @@ struct MainTapBar: View {
     }
 }
 
-#Preview {
-    MainTapBar()
-}
+//struct MainTapBar_Previews: PreviewProvider {
+//    static var previews: some View {
+//        MainTapBar(viewModel: MainTapBarViewModel(user: User()))
+//    }
+//}

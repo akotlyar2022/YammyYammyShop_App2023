@@ -6,12 +6,36 @@
 //
 
 import SwiftUI
+import Firebase
+import FirebaseAuth
+
+let screen = UIScreen.main.bounds
 
 @main
 struct YammyYammyShop_App2023App: App {
+    
+    @UIApplicationDelegateAdaptor private var appDelegate: AppDelegate
+    
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            
+            if let user = AuthService.shared.currentUser {
+                let viewModel = MainTapBarViewModel(user: user)
+                MainTapBar(viewModel: viewModel)
+            } else {
+                AuthView()
+            }
+            
+        }
+    }
+    
+    class AppDelegate: NSObject, UIApplicationDelegate {
+        func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
+            
+            FirebaseApp.configure()
+            print("AppDelegate OK")
+            
+            return true
         }
     }
 }

@@ -14,8 +14,10 @@ struct AuthView: View {
     @State private var email = ""
     @State private var password = ""
     @State private var confirmPassword = ""
-    
     @State private var isTabViewShow = false
+    @State private var isShowAlert = false
+    @State private var alertMessage = ""
+    
     
     var body: some View {
         VStack(spacing: 48) {
@@ -62,21 +64,54 @@ struct AuthView: View {
                 
                 Button {
                     if isAuth {
-                        print("Client authorization throw Firebase ")
-                        isTabViewShow.toggle()
+                        print("Client authorization throw Firebase")
+                        AuthService.shared.signIn(email: self.email, password: self.password) { result in
+                            switch result {
+                                
+                            case .success(_):
+                                isTabViewShow.toggle()
+                            case .failure(let error):
+                                alertMessage = "Authorization error: \(error.localizedDescription)"
+                                isShowAlert.toggle()
+                            }
+                        }
+                        
+                        
                     } else {
                         print("Registration")
-                        self.email = ""
-                        self.password = ""
-                        self.confirmPassword = ""
-                        self.isAuth.toggle()
+                        
+                        guard password == confirmPassword else {
+                            self.alertMessage = "The entered passwords do not match"
+                            self.isShowAlert.toggle()
+                            return
+                        }
+                        
+                        AuthService.shared.signUp(email: self.email, password: self.password) { result in
+                            switch result {
+                            
+                            case .success(let user):
+                                alertMessage = "You registered with \(user.email!)"
+                                self.isShowAlert.toggle()
+                                self.email = ""
+                                self.password = ""
+                                self.confirmPassword = ""
+                                self.isAuth.toggle()
+                                
+                            case .failure(let error):
+                                alertMessage = "Registration error \(error.localizedDescription)!"
+                                self.isShowAlert.toggle()
+                            }
+                            
+                        }
+                        
+                        
                     }
                 } label: {
                     Text(isAuth ? "Enter" : "Create account")
                         .font(.title2.bold())
                         .padding()
                         .frame(maxWidth: .infinity)
-                        //.background(Color("orange"))
+                        //.background(Color("whiteAlfa"))
                         .cornerRadius(15)
                         .padding(10)
                         .padding(.horizontal, 12)
@@ -88,7 +123,7 @@ struct AuthView: View {
                         .font(.title2.bold())
                         .padding(.horizontal)
                         .frame(maxWidth: .infinity)
-                        //.background(Color("orange"))
+                        //.background(Color("whiteAlfa"))
                         .cornerRadius(15)
                         .padding(10)
                         .padding(.horizontal, 12)
@@ -100,7 +135,11 @@ struct AuthView: View {
             .background(Color("whiteAlfa"))
             .cornerRadius(24)
             .padding(isAuth ? 30 : 12)
-            
+            .alert(alertMessage, isPresented: $isShowAlert) {
+                Button { } label: {
+                    Text("Ok")
+                }
+            }
             
         }.frame(maxWidth: .infinity,  maxHeight: .infinity)
             .background(Image("yammyBG").ignoresSafeArea()
@@ -108,7 +147,9 @@ struct AuthView: View {
             )
             .animation(Animation.easeInOut(duration: 0.5), value: isAuth)
             .fullScreenCover(isPresented: $isTabViewShow) {
-                MainTapBar()
+                
+                let mainTapBarViewModel = MainTapBarViewModel(user: AuthService.shared.currentUser!)
+                MainTapBar(viewModel: mainTapBarViewModel)
             }
     }
 }
