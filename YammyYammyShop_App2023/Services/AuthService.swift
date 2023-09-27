@@ -28,7 +28,7 @@ class AuthService {
                 let mwUser = MWUser(id: result.user.uid, 
                                        name: "",
                                        phone: 0,
-                                       adress: "")
+                                       address: "")
                 
                 DatabaseService.shared.setProfile(user: mwUser) { resultDataBase in
                     switch resultDataBase {

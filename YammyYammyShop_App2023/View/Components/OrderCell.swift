@@ -10,6 +10,7 @@ import SwiftUI
 struct OrderCell: View {
     
     var order: Order
+    
     var body: some View {
         HStack {
             Text("\(order.date)")
@@ -23,8 +24,8 @@ struct OrderCell: View {
     }
 }
 
-//struct OrderCell_Previews: PreviewProvider {
-//    static var previews: some View {
-//        OrderCell()
-//    }
-//}
+struct OrderCell_Previews: PreviewProvider {
+    static var previews: some View {
+        OrderCell(order: Order(userID: "", date: Date(), status: "New"))
+    }
+}

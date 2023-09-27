@@ -32,7 +32,7 @@ struct MainTapBar: View {
             ProfileView(viewModel: ProfileViewModel(profile: MWUser(id: "",
                                                                       name: "Name",
                                                                       phone: 380503180045,
-                                                                      adress: "Adress")))
+                                                                      address: "Address")))
                 .tabItem {
                     VStack {
                         Image(systemName: "person.crop.circle")

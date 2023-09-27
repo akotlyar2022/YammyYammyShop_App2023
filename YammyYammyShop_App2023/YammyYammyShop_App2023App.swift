@@ -20,8 +20,13 @@ struct YammyYammyShop_App2023App: App {
         WindowGroup {
             
             if let user = AuthService.shared.currentUser {
-                let viewModel = MainTapBarViewModel(user: user)
-                MainTapBar(viewModel: viewModel)
+                if user.uid == "M6yPvss3nSbgW0h1d6NwM4vvAHS2" {
+                    AdminOrdersView()
+                } else {
+                    let viewModel = MainTapBarViewModel(user: user)
+                    MainTapBar(viewModel: viewModel)
+                }
+                
             } else {
                 AuthView()
             }

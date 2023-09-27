@@ -60,7 +60,7 @@ struct ProfileView: View {
                     .padding()
                     .font(.title.bold())
                     .foregroundColor(.blue)
-                TextField("Adress", text: $viewModel.profile.adress)
+                TextField("Address", text: $viewModel.profile.address)
                     .padding()
                     .font(.title2.bold())
             }.padding()
@@ -101,7 +101,7 @@ struct ProfileView: View {
             }
         }
         .onSubmit {
-            $viewModel.setProfile
+            viewModel.setProfile()
         }
         .onAppear {
             self.viewModel.getProfile()
@@ -116,7 +116,7 @@ struct ProfileView_Previews: PreviewProvider {
         ProfileView(viewModel: ProfileViewModel(profile: MWUser(id: "",
                                                                 name: "Name",
                                                                 phone: 380503180045,
-                                                                adress: "Adress")))
+                                                                address: "Address")))
     }
     
 }

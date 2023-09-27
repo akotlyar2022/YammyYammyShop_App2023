@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import FirebaseFirestore
 
 enum OrderStatus: String {
     case new = "New Order"

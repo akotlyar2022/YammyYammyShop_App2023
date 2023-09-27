@@ -59,6 +59,10 @@
 		FAE9744C2AC0BA2900CC1F75 /* Order.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE9744B2AC0BA2900CC1F75 /* Order.swift */; };
 		FAE9744E2AC0C36700CC1F75 /* OrderStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE9744D2AC0C36600CC1F75 /* OrderStatus.swift */; };
 		FAE974502AC332AD00CC1F75 /* OrderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE9744F2AC332AC00CC1F75 /* OrderCell.swift */; };
+		FAF2ACFA2AC49EF900D70C6D /* AdminOrdersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAF2ACF92AC49EF900D70C6D /* AdminOrdersView.swift */; };
+		FAF2ACFD2AC4A07F00D70C6D /* AdminOrdersViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAF2ACFC2AC4A07F00D70C6D /* AdminOrdersViewModel.swift */; };
+		FAF2ACFF2AC4A51600D70C6D /* OrderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAF2ACFE2AC4A51600D70C6D /* OrderView.swift */; };
+		FAF2AD012AC4A54700D70C6D /* OrderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAF2AD002AC4A54700D70C6D /* OrderViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -88,6 +92,10 @@
 		FAE9744B2AC0BA2900CC1F75 /* Order.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Order.swift; sourceTree = "<group>"; };
 		FAE9744D2AC0C36600CC1F75 /* OrderStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderStatus.swift; sourceTree = "<group>"; };
 		FAE9744F2AC332AC00CC1F75 /* OrderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderCell.swift; sourceTree = "<group>"; };
+		FAF2ACF92AC49EF900D70C6D /* AdminOrdersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminOrdersView.swift; sourceTree = "<group>"; };
+		FAF2ACFC2AC4A07F00D70C6D /* AdminOrdersViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminOrdersViewModel.swift; sourceTree = "<group>"; };
+		FAF2ACFE2AC4A51600D70C6D /* OrderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderView.swift; sourceTree = "<group>"; };
+		FAF2AD002AC4A54700D70C6D /* OrderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -170,6 +178,7 @@
 		FA33B8A12ABECA0000EC7461 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				FAF2ACFB2AC49F0800D70C6D /* AdminInterface */,
 				FA21F5752ABD920000ADFEEE /* AuthView.swift */,
 				FA33B8992ABEB67300EC7461 /* MainTapBar.swift */,
 				FA33B89B2ABEC0B300EC7461 /* CatalogView.swift */,
@@ -207,10 +216,12 @@
 			isa = PBXGroup;
 			children = (
 				FA33B8A82ABEE44900EC7461 /* CatalogViewModel.swift */,
+				FAF2AD002AC4A54700D70C6D /* OrderViewModel.swift */,
 				FA33B8F12AC04EE300EC7461 /* MainTapBarViewModel.swift */,
 				FA33B8AD2ABF152800EC7461 /* ProductDetailViewModel.swift */,
 				FA33B8AF2ABF453600EC7461 /* CartViewModel.swift */,
 				FAE974492AC093E400CC1F75 /* ProfileViewModel.swift */,
+				FAF2ACFC2AC4A07F00D70C6D /* AdminOrdersViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -222,6 +233,15 @@
 				FA33B8F52AC0794700EC7461 /* DatabaseService.swift */,
 			);
 			path = Services;
+			sourceTree = "<group>";
+		};
+		FAF2ACFB2AC49F0800D70C6D /* AdminInterface */ = {
+			isa = PBXGroup;
+			children = (
+				FAF2ACF92AC49EF900D70C6D /* AdminOrdersView.swift */,
+				FAF2ACFE2AC4A51600D70C6D /* OrderView.swift */,
+			);
+			name = AdminInterface;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -328,6 +348,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FA33B8B02ABF453700EC7461 /* CartViewModel.swift in Sources */,
+				FAF2ACFD2AC4A07F00D70C6D /* AdminOrdersViewModel.swift in Sources */,
 				FAE9744A2AC093E400CC1F75 /* ProfileViewModel.swift in Sources */,
 				FAE9744C2AC0BA2900CC1F75 /* Order.swift in Sources */,
 				FA33B8F22AC04EE400EC7461 /* MainTapBarViewModel.swift in Sources */,
@@ -338,15 +359,18 @@
 				FA21F5762ABD920000ADFEEE /* AuthView.swift in Sources */,
 				FA21F5742ABD920000ADFEEE /* YammyYammyShop_App2023App.swift in Sources */,
 				FA33B8B42ABF53D800EC7461 /* PositionCell.swift in Sources */,
+				FAF2ACFA2AC49EF900D70C6D /* AdminOrdersView.swift in Sources */,
 				FA33B8F42AC0778100EC7461 /* MWUser.swift in Sources */,
 				FAE974502AC332AD00CC1F75 /* OrderCell.swift in Sources */,
 				FAE9744E2AC0C36700CC1F75 /* OrderStatus.swift in Sources */,
 				FA33B8AE2ABF152800EC7461 /* ProductDetailViewModel.swift in Sources */,
 				FA33B8B22ABF457900EC7461 /* Position.swift in Sources */,
 				FA33B8A02ABEC12000EC7461 /* ProfileView.swift in Sources */,
+				FAF2ACFF2AC4A51600D70C6D /* OrderView.swift in Sources */,
 				FA33B8A52ABECF7200EC7461 /* ProductCell.swift in Sources */,
 				FA33B89C2ABEC0B400EC7461 /* CatalogView.swift in Sources */,
 				FA33B8EF2AC0327200EC7461 /* AuthService.swift in Sources */,
+				FAF2AD012AC4A54700D70C6D /* OrderViewModel.swift in Sources */,
 				FA33B8A32ABECA3D00EC7461 /* Product.swift in Sources */,
 				FA33B8A92ABEE44900EC7461 /* CatalogViewModel.swift in Sources */,
 			);
