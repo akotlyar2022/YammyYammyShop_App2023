@@ -23,6 +23,18 @@ class DBService {
     
     private init() { }
         
+    
+    func setUser(user: MWUser,
+                 completion: @escaping (Result<MWUser, Error>) -> Void) {
+        usersRef.document(user.id).setData(user.representation) { error in
+            if let error = error {
+                completion(.failure(error))
+            } else {
+                completion(.success(user))
+            }
+        }
+    }
+    
         func setOrder(order: Order,
                       completion: @escaping (Result<Order, Error>) -> Void) {
             ordersRef.document(order.id).setData(order.representation) { error in
@@ -79,7 +91,7 @@ class DBService {
             completion(.success(positions))
         }
     
-            func setProf(user: MWUser,
+            func setProfile(user: MWUser,
                          completion: @escaping (Result<MWUser, Error>) -> Void) {
                 usersRef.document(user.id).setData(user.representation) { error in
                     if let error = error {
@@ -111,8 +123,8 @@ class DBService {
         }
     }
     
-        func getProf(by userId: String, completion: @escaping (Result<MWUser, Error>) -> ()) {
-                usersRef.document(AuthService.sharedAuth.currentUser!.uid).getDocument { docSnapshot, error in
+        func getProfile(completion: @escaping (Result<MWUser, Error>) -> ()) {
+            usersRef.document(AuthService.sharedAuth.currentUser!.uid).getDocument { docSnapshot, error in
                     guard let snap = docSnapshot else { return }
                     guard let data = snap.data() else { return }
                     guard let userName = data["name"] as? String else { return }

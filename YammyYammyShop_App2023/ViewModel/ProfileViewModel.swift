@@ -50,29 +50,29 @@ class ProfileViewModel: ObservableObject {
                 }
             }
             
-//            func setProfile() {
-//                DBService.sharedDB.setProfile(user: self.profile) { result in
-//                    switch result {
-//                        
-//                    case .success(let user):
-//                        print(user.name)
-//                    case .failure(let error):
-//                        print("Data sending error \(error.localizedDescription)")
-//                    }
-//                }
-//            }
+            func setProfile() {
+                DBService.sharedDB.setProfile(user: self.profile) { result in
+                    switch result {
+                        
+                    case .success(let user):
+                        print(user.name)
+                    case .failure(let error):
+                        print("Data sending error \(error.localizedDescription)")
+                    }
+                }
+            }
             
-//            func getProfile() {
-//                DBService.sharedDB.getProfile { result in
-//                    switch result {
-//                        
-//                    case .success(let user):
-//                        self.profile  = user
-//                    case .failure(let failure):
-//                        print(error.localizedDescription)
-//                    }
-//                }
-//            }
+            func getProfile() {
+                DBService.sharedDB.getProfile { result in
+                    switch result {
+                        
+                    case .success(let user):
+                        self.profile  = user
+                    case .failure(let error):
+                        print(error.localizedDescription)
+                    }
+                }
+            }
         }
     }
 }

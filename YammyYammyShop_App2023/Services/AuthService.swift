@@ -21,6 +21,10 @@ class AuthService {
         
     }
     
+    func signOut() {
+        try! auth.signOut()
+    }
+    
     func signUp(email: String, password: String, completion: @escaping(Result<User, Error>) -> Void) {
         
         auth.createUser(withEmail: email, password: password) { result, error in
@@ -30,7 +34,7 @@ class AuthService {
                                        phone: 0,
                                        address: "")
                 
-                DBService.sharedDB.setProf(user: mwUser) { resultDataBase in
+                DBService.sharedDB.setUser(user: mwUser) { resultDataBase in
                     switch resultDataBase {
                     case .success(_):
                         completion(.success(result.user))
@@ -38,7 +42,6 @@ class AuthService {
                         completion(.failure(error))
                     }
                 }
-                completion(.success(result.user))
             } else if let error = error {
                 completion(.failure(error))
             }

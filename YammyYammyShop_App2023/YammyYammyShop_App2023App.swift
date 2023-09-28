@@ -24,7 +24,7 @@ struct YammyYammyShop_App2023App: App {
                     AdminOrdersView()
                 } else {
                     let mainTapViewModel = MainTapBarViewModel(user: user)
-//                    MainTapBar(mainTapBarViewModel: MainTapBarViewModel)
+                    MainTapBar(mainTapBarViewModel: mainTapViewModel)
                 }
                 
             } else {

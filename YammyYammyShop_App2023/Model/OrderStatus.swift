@@ -8,7 +8,7 @@
 import Foundation
 import FirebaseFirestore
 
-enum OrderStatus: String {
+enum OrderStatus: String, CaseIterable {
     case new = "New Order"
     case packing = "Order is Packing"
     case delivering = "Order is Delivering"

@@ -13,6 +13,7 @@ struct ProfileView: View {
     @State var isQuitAlertPresented = false
     @State var isAuthViewPresented = false
     
+    
     @StateObject var profViewModel: ProfileViewModel
     
     var body: some View {
@@ -101,11 +102,12 @@ struct ProfileView: View {
             }
         }
         .onSubmit {
-//            viewModel.setProf()
+            print("On Submit")
+//            viewModel.setProfile()
         }
         .onAppear {
-//            self.profViewModel.getProfile()
-            self.profViewModel.getOrders()
+//            self.ViewModel.getProfile()
+//            self.profViewModel.getOrders()
         }
     }
         

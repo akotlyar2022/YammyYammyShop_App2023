@@ -11,26 +11,63 @@ struct AdminOrdersView: View {
     
     @StateObject var admViewModel = AdminOrdersViewModel()
     @State var isOrderViewShow = false
-    
+    @State var isShowAuthView = false
     
 
     var body: some View {
-        List {
-            ForEach(admViewModel.orders, id: \.id) { order in
-                OrderCell(order: order)
-//                admViewModel.currentOrder = order
-                    .onTapGesture {
-                        isOrderViewShow.toggle()
-                    }
-            }
-        }.listStyle(.plain)
-            .onAppear() {
-                admViewModel.getOrder()
-            }
-            .sheet(isPresented: $isOrderViewShow) {
-                let orderViewModel = OrderViewModel(order: admViewModel.currentOrder)
-                OrderView(ordViewModel: orderViewModel)
-            }
+        
+        VStack {
+            HStack {
+                Button {
+                    AuthService.sharedAuth.signOut()
+                    isShowAuthView.toggle()
+                } label: {
+                    Text("Exit")
+                        .foregroundColor(.red)
+                }
+                Spacer()
+                
+                Button {
+                    print("Add new ")
+                } label: {
+                    Text("Add new ")
+                        .foregroundColor(.white)
+                        .padding()
+                        .background(Color.green)
+                        .cornerRadius(15)
+                }
+
+                
+                Spacer()
+                Button {
+                    admViewModel.getOrder()
+                } label: {
+                    Text("Refresh")
+                }
+            }.padding()
+            
+            
+            List {
+                ForEach(admViewModel.orders, id: \.id) { order in
+                    OrderCell(order: order)
+                        .onTapGesture {
+                            admViewModel.currentOrder = order
+                            isOrderViewShow.toggle()
+                        }
+                }
+            }.listStyle(.plain)
+                .onAppear {
+                    admViewModel.getOrder()
+                }
+                .sheet(isPresented: $isOrderViewShow) {
+                    let orderViewModel = OrderViewModel(order: admViewModel.currentOrder)
+                    OrderView(ordViewModel: orderViewModel)
+                }
+        }.fullScreenCover(isPresented: $isShowAuthView) {
+            AuthView()
+        }
+        
+        
     }
 }
 
