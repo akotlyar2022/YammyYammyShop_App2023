@@ -9,27 +9,27 @@ import SwiftUI
 
 struct AdminOrdersView: View {
     
-    @StateObject var viewModel = AdminOrdersViewModel()
-    @State var isorderViewShow = false
+    @StateObject var admViewModel = AdminOrdersViewModel()
+    @State var isOrderViewShow = false
     
     
 
     var body: some View {
         List {
-            ForEach(viewModel.orders, id: \.id) { order in
+            ForEach(admViewModel.orders, id: \.id) { order in
                 OrderCell(order: order)
-                viewModel.currentOrder = order
+//                admViewModel.currentOrder = order
                     .onTapGesture {
-                        isorderViewShow.toggle()
+                        isOrderViewShow.toggle()
                     }
             }
         }.listStyle(.plain)
             .onAppear() {
-                viewModel.getOrders()
+                admViewModel.getOrder()
             }
-            .sheet(isPresented: $isorderViewShow) {
-                let orderViewModel = OrderViewModel(order: viewModel.currentOrder)
-                OrderView(viewModel: orderViewModel)
+            .sheet(isPresented: $isOrderViewShow) {
+                let orderViewModel = OrderViewModel(order: admViewModel.currentOrder)
+                OrderView(ordViewModel: orderViewModel)
             }
     }
 }

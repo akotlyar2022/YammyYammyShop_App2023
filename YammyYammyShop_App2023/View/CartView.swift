@@ -9,16 +9,16 @@ import SwiftUI
 
 struct CartView: View {
     
-    @StateObject var viewModel: CartViewModel
+    @StateObject var cartViewModel: CartViewModel
     
     var body: some View {
         
         VStack {
-            List(viewModel.positions) { position in
+            List(cartViewModel.positions) { position in
                 PositionCell(position: position)
                     .swipeActions {
                         Button {
-                            viewModel.positions.removeAll { pos in
+                            cartViewModel.positions.removeAll { pos in
                                 pos.id == position.id
                             }
                         } label: {
@@ -33,7 +33,7 @@ struct CartView: View {
                 Text ("Total:")
                     .font(.largeTitle.bold())
                 Spacer()
-                Text ("\(Int(self.viewModel.cost)) $")
+                Text ("\(Int(self.cartViewModel.cost)) $")
                     .font(.largeTitle.bold())            }.padding()
             
             HStack(spacing: 24) {
@@ -53,12 +53,12 @@ struct CartView: View {
                 Button {
                     print("Order")
                     
-                    var order = Order(userID: AuthService.shared.currentUser!.uid,
+                    var order = Order(userID: AuthService.sharedAuth.currentUser!.uid,
                                       date: Date(),
                                       status: OrderStatus.new.rawValue)
-                    order.positions = self.viewModel.positions
+                    order.positions = self.cartViewModel.positions
                     
-                    DatabaseService.shared.setOrder(order: order) { result in
+                    DBService.sharedDB.setOrder(order: order) { result in
                         switch result {
                             
                         case .success(let order):
@@ -89,5 +89,5 @@ struct CartView: View {
 //    }
 //}
 #Preview {
-    CartView(viewModel: CartViewModel.shared)
+    CartView(cartViewModel: CartViewModel.shared)
 }

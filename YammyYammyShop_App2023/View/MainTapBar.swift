@@ -9,7 +9,7 @@ import SwiftUI
 
 struct MainTapBar: View {
     
-    var viewModel: MainTapBarViewModel
+    var mainTapBarViewModel: MainTapBarViewModel
     
     var body: some View {
         TabView {
@@ -22,14 +22,14 @@ struct MainTapBar: View {
                         Text("Catalog")
                     }
                 }
-            CartView(viewModel: CartViewModel.shared)
+            CartView(cartViewModel: CartViewModel.shared)
                 .tabItem {
                     VStack {
                         Image(systemName: "cart")
                         Text("Cart")
                     }
                 }
-            ProfileView(viewModel: ProfileViewModel(profile: MWUser(id: "",
+            ProfileView(profViewModel: ProfileViewModel(profile: MWUser(id: "",
                                                                       name: "Name",
                                                                       phone: 380503180045,
                                                                       address: "Address")))
@@ -45,6 +45,6 @@ struct MainTapBar: View {
 
 //struct MainTapBar_Previews: PreviewProvider {
 //    static var previews: some View {
-//        MainTapBar(viewModel: MainTapBarViewModel(user: User()))
+//        MainTapBar(mainTapBarViewModel: MainTapBarViewModel(user: user()))
 //    }
 //}

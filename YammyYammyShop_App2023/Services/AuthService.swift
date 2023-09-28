@@ -10,7 +10,7 @@ import Firebase
 import FirebaseAuth
 
 class AuthService {
-    static let shared = AuthService()
+    static let sharedAuth = AuthService()
     
     private init() {}
     
@@ -30,7 +30,7 @@ class AuthService {
                                        phone: 0,
                                        address: "")
                 
-                DatabaseService.shared.setProfile(user: mwUser) { resultDataBase in
+                DBService.sharedDB.setProf(user: mwUser) { resultDataBase in
                     switch resultDataBase {
                     case .success(_):
                         completion(.success(result.user))

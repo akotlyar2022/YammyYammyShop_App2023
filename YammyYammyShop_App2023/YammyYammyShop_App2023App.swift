@@ -19,12 +19,12 @@ struct YammyYammyShop_App2023App: App {
     var body: some Scene {
         WindowGroup {
             
-            if let user = AuthService.shared.currentUser {
+            if let user = AuthService.sharedAuth.currentUser {
                 if user.uid == "M6yPvss3nSbgW0h1d6NwM4vvAHS2" {
                     AdminOrdersView()
                 } else {
-                    let viewModel = MainTapBarViewModel(user: user)
-                    MainTapBar(viewModel: viewModel)
+                    let mainTapViewModel = MainTapBarViewModel(user: user)
+//                    MainTapBar(mainTapBarViewModel: MainTapBarViewModel)
                 }
                 
             } else {

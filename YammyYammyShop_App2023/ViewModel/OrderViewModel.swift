@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import FirebaseFirestore
 
 
 class OrderViewModel: ObservableObject {
@@ -18,7 +19,7 @@ class OrderViewModel: ObservableObject {
     }
     
     func getUserData() {
-        DatabaseService.shared.getProfiles(by: order.userID) { result in
+        DBService.sharedDB.getProf(by: order.userID) { result in
             switch result {
             case .success(let user):
                 self.user = user

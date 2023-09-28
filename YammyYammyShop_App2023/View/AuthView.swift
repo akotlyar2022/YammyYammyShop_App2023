@@ -65,7 +65,7 @@ struct AuthView: View {
                 Button {
                     if isAuth {
                         print("Client authorization throw Firebase")
-                        AuthService.shared.signIn(email: self.email, password: self.password) { result in
+                        AuthService.sharedAuth.signIn(email: self.email, password: self.password) { result in
                             switch result {
                                 
                             case .success(_):
@@ -86,7 +86,7 @@ struct AuthView: View {
                             return
                         }
                         
-                        AuthService.shared.signUp(email: self.email, password: self.password) { result in
+                        AuthService.sharedAuth.signUp(email: self.email, password: self.password) { result in
                             switch result {
                             
                             case .success(let user):
@@ -148,8 +148,8 @@ struct AuthView: View {
             .animation(Animation.easeInOut(duration: 0.5), value: isAuth)
             .fullScreenCover(isPresented: $isTabViewShow) {
                 
-                let mainTapBarViewModel = MainTapBarViewModel(user: AuthService.shared.currentUser!)
-                MainTapBar(viewModel: mainTapBarViewModel)
+                let mainTapBarViewModel = MainTapBarViewModel(user: AuthService.sharedAuth.currentUser!)
+                MainTapBar(mainTapBarViewModel: mainTapBarViewModel)
             }
     }
 }

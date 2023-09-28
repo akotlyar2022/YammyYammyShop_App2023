@@ -9,31 +9,31 @@ import SwiftUI
 
 struct OrderView: View {
     
-    @StateObject var viewModel: OrderViewModel
+    @StateObject var ordViewModel: OrderViewModel
     
     var body: some View {
         
         VStack(alignment: .leading, spacing: 8) {
-            Text("\(viewModel.user.name)")
+            Text("\(ordViewModel.user.name)")
                 .font(.title3).bold()
-            Text("+995 \(viewModel.user.phone)")
+            Text("+995 \(ordViewModel.user.phone)")
                 .bold()
-            Text("\(viewModel.user.address)")
+            Text("\(ordViewModel.user.address)")
             List {
-                ForEach(viewModel.order.positions, id: \.id) { position in
+                ForEach(ordViewModel.order.positions, id: \.id) { position in
                     PositionCell(position: position)
                 }
             }
         }.padding()
             .onAppear {
-                viewModel.getUserData()
+                ordViewModel.getUserData()
             }
     }
 }
 
 struct OrderView_Previews: PreviewProvider {
     static var previews: some View {
-        OrderView(viewModel: OrderViewModel(order: Order(userID: "", date: Date(), status: "new")))
+        OrderView(ordViewModel: OrderViewModel(order: Order(userID: "", date: Date(), status: "new")))
     }
 }
 
