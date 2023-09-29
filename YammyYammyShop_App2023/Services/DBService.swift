@@ -6,102 +6,19 @@
 //
 
 import Foundation
-import Firebase
-import FirebaseStorage
+import FirebaseFirestore
 
 class DBService {
     
     static let sharedDB = DBService()
     private let db = Firestore.firestore()
     
-    private var usersRef: CollectionReference {
-        return db.collection("users")
-    }
-    private var ordersRef: CollectionReference {
-        return db.collection("orders")
-    }
+    private var usersRef: CollectionReference { return db.collection("users") }
+    private var ordersRef: CollectionReference { return db.collection("orders") }
+    private var productsRef: CollectionReference { return db.collection("products") }
     
     private init() { }
         
-    
-    func setUser(user: MWUser,
-                 completion: @escaping (Result<MWUser, Error>) -> Void) {
-        usersRef.document(user.id).setData(user.representation) { error in
-            if let error = error {
-                completion(.failure(error))
-            } else {
-                completion(.success(user))
-            }
-        }
-    }
-    
-        func setOrder(order: Order,
-                      completion: @escaping (Result<Order, Error>) -> Void) {
-            ordersRef.document(order.id).setData(order.representation) { error in
-                if let error = error {
-                    completion(.failure(error))
-                } else {
-                    self.setPositions(to: order.id, // delete self
-                                 positions: order.positions) { result in
-                        switch result {
-                        case .success(let positions):
-                            print(positions.count)
-                        case .failure(let error):
-                            print(error.localizedDescription)
-                        }
-                    }
-                }
-            }
-        }
-        
-        func getOrder(by userID: String?,
-                      completion: @escaping (Result<[Order], Error>) -> Void) {
-            
-            self.ordersRef.getDocuments { qSnap, error in
-                
-                if let querySnapshot = qSnap { // ? qSnap ?
-                    
-                    var orders = [Order]()
-                    for doc in querySnapshot.documents { // ? qSnap ?
-                        if let userID = userID {
-                            if let order = Order(doc: doc), order.userID == userID {
-                                orders.append(order)
-                            }
-                        } else { // this part for admin
-                            if let order = Order(doc: doc) {
-                                orders.append(order)
-                            }
-                        }
-                    }
-                    completion(.success(orders))
-                } else if let error = error {
-                    completion(.failure(error))
-                }
-            }
-        }
-        
-        func setPositions(to orderId: String,
-                          positions: [Position],
-                          completion: @escaping (Result<[Position], Error>) -> Void) {
-            
-            let positionsRef = ordersRef.document(orderId).collection("positions")
-            for position in positions {
-                positionsRef.document(position.id).setData(position.representation)
-            }
-            completion(.success(positions))
-        }
-    
-        func setProfile(user: MWUser,
-                         completion: @escaping (Result<MWUser, Error>) -> Void) {
-                usersRef.document(user.id).setData(user.representation) { error in
-                    if let error = error {
-                        completion(.failure(error))
-                    } else {
-                        completion(.success(user))
-                    }
-                }
-            }
-    
     func getPositions(by orderID: String, completion: @escaping (Result<[Position], Error>) -> Void) {
         
         let positionsRef = ordersRef.document(orderID).collection("positions")
@@ -123,17 +40,132 @@ class DBService {
         }
     }
     
-        func getProfile(completion: @escaping (Result<MWUser, Error>) -> ()) {
-            usersRef.document(AuthService.sharedAuth.currentUser!.uid).getDocument { docSnapshot, error in
-                    guard let snap = docSnapshot else { return }
-                    guard let data = snap.data() else { return }
-                    guard let userName = data["name"] as? String else { return }
-                    guard let id = data["id"] as? String else { return }
-                    guard let phone = data["phone"] as? Int else { return }
-                    guard let address = data["address"] as? String else { return }
-                    
-                    let user = MWUser(id: id, name: userName, phone: phone, address: address)
+    func getOrders(by userID: String?,
+                  completion: @escaping (Result<[Order], Error>) -> Void) {
+        
+        self.ordersRef.getDocuments { qSnap, error in
+            
+            if let qSnap = qSnap { // ? qSnap ?
+                
+                var orders = [Order]()
+                for doc in qSnap.documents { // ? qSnap ?
+                    if let userID = userID {
+                        if let order = Order(doc: doc), order.userID == userID {
+                            orders.append(order)
+                        }
+                    } else { // this part for admin
+                        if let order = Order(doc: doc) {
+                            orders.append(order)
+                        }
+                    }
+                }
+                completion(.success(orders))
+            } else if let error = error {
+                completion(.failure(error))
+            }
+        }
+    }
+    
+    func setOrder(order: Order,
+                  completion: @escaping (Result<Order, Error>) -> Void) {
+        ordersRef.document(order.id).setData(order.representation) { error in
+            if let error = error {
+                completion(.failure(error))
+            } else {
+                self.setPositions(to: order.id, // delete self
+                             positions: order.positions) { result in
+                    switch result {
+                    case .success(let positions):
+                        print(positions.count)
+                        completion(.success(order))
+                    case .failure(let error):
+                        print(error.localizedDescription)
+                    }
+                }
+            }
+        }
+    }
+    
+    func setPositions(to orderId: String,
+                      positions: [Position],
+                      completion: @escaping (Result<[Position], Error>) -> Void) {
+        
+        let positionsRef = ordersRef.document(orderId).collection("positions")
+        
+        for position in positions {
+            positionsRef.document(position.id).setData(position.representation)
+        }
+        completion(.success(positions))
+    }
+
+    func setProfile(user: MWUser,
+                     completion: @escaping (Result<MWUser, Error>) -> Void) {
+            usersRef.document(user.id).setData(user.representation) { error in
+                if let error = error {
+                    completion(.failure(error))
+                } else {
                     completion(.success(user))
                 }
             }
         }
+    
+    func getProfile(completion: @escaping (Result<MWUser, Error>) -> ()) {
+        
+        usersRef.document(AuthService.sharedAuth.currentUser!.uid).getDocument { docSnapshot, error in
+            
+                guard let snap = docSnapshot else { return }
+                guard let data = snap.data() else { return }
+                guard let userName = data["name"] as? String else { return }
+                guard let id = data["id"] as? String else { return }
+                guard let phone = data["phone"] as? Int else { return }
+                guard let address = data["address"] as? String else { return }
+                
+                let user = MWUser(id: id, name: userName, phone: phone, address: address)
+                completion(.success(user))
+            }
+        }
+    func setProduct(product: Product, image: Data, completion: @escaping(Result<Product, Error>) -> Void) {
+        
+        StorageSevice.sharedStorage.upload(id: product.id, image: image) { result in
+            switch result {
+                
+            case .success(let sizeInfo):
+                print(sizeInfo)
+                self.productsRef.document(product.id).setData(product.representation) { error in
+                    if let error = error {
+                        completion(.failure(error))
+                    } else {
+                        completion(.success(product))
+                    }
+                }
+            case .failure(let error):
+                completion(.failure(error))
+            }
+        }
+    }
+    
+    func setUser(user: MWUser,
+                 completion: @escaping (Result<MWUser, Error>) -> Void) {
+        usersRef.document(user.id).setData(user.representation) { error in
+            if let error = error {
+                completion(.failure(error))
+            } else {
+                completion(.success(user))
+            }
+        }
+    }
+}
+    
+    
+    
+        
+        
+        
+        
+        
+    
+
+    
+    
+    
+        

@@ -152,8 +152,8 @@ struct AuthView: View {
                 if AuthService.sharedAuth.currentUser?.uid == "M6yPvss3nSbgW0h1d6NwM4vvAHS2" {
                     AdminOrdersView()
                 } else {
-                    let mainTapBarViewModel = MainTapBarViewModel(user: AuthService.sharedAuth.currentUser!)
-                    MainTapBar(mainTapBarViewModel: mainTapBarViewModel)
+                    let viewModel = MainTapBarViewModel(user: AuthService.sharedAuth.currentUser!)
+                    MainTapBar(viewModel: viewModel)
                 }
             }
     }

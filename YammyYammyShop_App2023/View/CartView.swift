@@ -9,16 +9,16 @@ import SwiftUI
 
 struct CartView: View {
     
-    @StateObject var cartViewModel: CartViewModel
+    @StateObject var viewModel: CartViewModel
     
     var body: some View {
         
         VStack {
-            List(cartViewModel.positions) { position in
+            List(viewModel.positions) { position in
                 PositionCell(position: position)
                     .swipeActions {
                         Button {
-                            cartViewModel.positions.removeAll { pos in
+                            viewModel.positions.removeAll { pos in
                                 pos.id == position.id
                             }
                         } label: {
@@ -33,7 +33,7 @@ struct CartView: View {
                 Text ("Total:")
                     .font(.largeTitle.bold())
                 Spacer()
-                Text ("\(Int(self.cartViewModel.cost)) $")
+                Text ("\(Int(self.viewModel.cost)) $")
                     .font(.largeTitle.bold())            }.padding()
             
             HStack(spacing: 24) {
@@ -56,7 +56,7 @@ struct CartView: View {
                     var order = Order(userID: AuthService.sharedAuth.currentUser!.uid,
                                       date: Date(),
                                       status: OrderStatus.new.rawValue)
-                    order.positions = self.cartViewModel.positions
+                    order.positions = self.viewModel.positions
                     
                     DBService.sharedDB.setOrder(order: order) { result in
                         switch result {
@@ -89,5 +89,5 @@ struct CartView: View {
 //    }
 //}
 #Preview {
-    CartView(cartViewModel: CartViewModel.shared)
+    CartView(viewModel: CartViewModel.shared)
 }

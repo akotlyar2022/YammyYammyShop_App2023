@@ -9,7 +9,7 @@ import SwiftUI
 
 struct AdminOrdersView: View {
     
-    @StateObject var admViewModel = AdminOrdersViewModel()
+    @StateObject var viewModel = AdminOrdersViewModel()
     @State var isOrderViewShow = false
     @State var isShowAuthView = false
     @State private var isShowAddProductView = false
@@ -49,7 +49,7 @@ struct AdminOrdersView: View {
                 
                 Spacer()
                 Button {
-                    admViewModel.getOrder()
+                    viewModel.getOrder()
                 } label: {
                     Text("Refresh")
                         .font(.title2)
@@ -63,20 +63,20 @@ struct AdminOrdersView: View {
             
             
             List {
-                ForEach(admViewModel.orders, id: \.id) { order in
+                ForEach(viewModel.orders, id: \.id) { order in
                     OrderCell(order: order)
                         .onTapGesture {
-                            admViewModel.currentOrder = order
+                            viewModel.currentOrder = order
                             isOrderViewShow.toggle()
                         }
                 }
             }.listStyle(.plain)
                 .onAppear {
-                    admViewModel.getOrder()
+                    viewModel.getOrder()
                 }
                 .sheet(isPresented: $isOrderViewShow) {
-                    let orderViewModel = OrderViewModel(order: admViewModel.currentOrder)
-                    OrderView(orderViewModel: orderViewModel)
+                    let viewModel = OrderViewModel(order: viewModel.currentOrder)
+                    OrderView(viewModel: viewModel)
                 }
         }.fullScreenCover(isPresented: $isShowAuthView) {
             AuthView()

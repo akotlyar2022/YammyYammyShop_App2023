@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ProductDetailView: View {
     
-    var prodViewModel: ProductDetailViewModel
+    var viewModel: ProductDetailViewModel
     @State var size = "1 kg Box"
     @State var count = 1
     
@@ -25,24 +25,24 @@ struct ProductDetailView: View {
             Spacer()
             HStack {
                 Spacer()
-                Text("\(prodViewModel.product.title)")
+                Text("\(viewModel.product.title)")
                     .font(.title.bold())
                     .foregroundColor(/*@START_MENU_TOKEN@*/.blue/*@END_MENU_TOKEN@*/)
                 Spacer()
-                Text("Price: \(Int(prodViewModel.getPrice(size: self.size))) $")
+                Text("Price: \(Int(viewModel.getPrice(size: self.size))) $")
                     .font(.title.bold())
                     .foregroundColor(.green)
                 Spacer()
             }
             Spacer()
-            Text("\(prodViewModel.product.description)")
+            Text("\(viewModel.product.description)")
                 .font(.title.bold())
                 .foregroundColor(.black)
                 .padding()
             Spacer()
             
             Picker("BoxSize", selection: $size) {
-                ForEach(prodViewModel.sizes, id: \.self) { item in
+                ForEach(viewModel.sizes, id: \.self) { item in
                     Text(item)
                 }
             }.pickerStyle(.menu)
@@ -59,9 +59,9 @@ struct ProductDetailView: View {
                 Spacer()
                 Button {
                     var position = Position(id: UUID().uuidString,
-                                            product: prodViewModel.product,
+                                            product: viewModel.product,
                                             count: Double(self.count))
-                    position.product.price = prodViewModel.getPrice(size: size)
+                    position.product.price = viewModel.getPrice(size: size)
                     
                     CartViewModel.shared.addPosition(position)
                     presentationMode.wrappedValue.dismiss()
@@ -80,7 +80,7 @@ struct ProductDetailView: View {
 
 struct ProductDetailView_Previews: PreviewProvider {
     static var previews: some View {
-        ProductDetailView(prodViewModel: ProductDetailViewModel(product: Product(id: "001",
+        ProductDetailView(viewModel: ProductDetailViewModel(product: Product(id: "001",
                                                                              title: "Orange",
                                                                              imageUrl: "NotFound",
                                                                              price: 2.0,

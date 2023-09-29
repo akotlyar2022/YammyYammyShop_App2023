@@ -18,7 +18,7 @@ class ProfileViewModel: ObservableObject {
     }
     
     func getOrders() {
-        DBService.sharedDB.getOrder(by: AuthService.sharedAuth.currentUser!.uid) { result in
+        DBService.sharedDB.getOrders(by: AuthService.sharedAuth.currentUser!.uid) { result in
             
             switch result {
             case .success(let orders):
@@ -51,7 +51,7 @@ class ProfileViewModel: ObservableObject {
             }
             
             func setProfile() {
-                DBService.sharedDB.setProfile(user: self.profile) { result in
+                DBService.sharedDB.setUser(user: self.profile) { result in
                     switch result {
                         
                     case .success(let user):
@@ -63,6 +63,7 @@ class ProfileViewModel: ObservableObject {
             }
             
             func getProfile() {
+                
                 DBService.sharedDB.getProfile { result in
                     switch result {
                         

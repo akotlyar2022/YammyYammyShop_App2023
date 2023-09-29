@@ -14,7 +14,7 @@ struct ProfileView: View {
     @State var isAuthViewPresented = false
     
     
-    @StateObject var profViewModel: ProfileViewModel
+    @StateObject var viewModel: ProfileViewModel
     
     var body: some View {
         
@@ -45,13 +45,13 @@ struct ProfileView: View {
                 Spacer(minLength: 20)
                 
                 VStack(alignment: .leading, spacing: 12) {
-                    TextField("Name", text: $profViewModel.profile.name)
+                    TextField("Name", text: $viewModel.profile.name)
                         .font(.title.bold())
                         .foregroundColor(/*@START_MENU_TOKEN@*/.blue/*@END_MENU_TOKEN@*/)
                     
                     HStack {
                         Text("+995")
-                        TextField("Phone", value: $profViewModel.profile.phone, format: .number)
+                        TextField("Phone", value: $viewModel.profile.phone, format: .number)
                     }.font(.title2.bold())
                 }.padding(30)
             }
@@ -61,17 +61,17 @@ struct ProfileView: View {
                     .padding()
                     .font(.title.bold())
                     .foregroundColor(.blue)
-                TextField("Address", text: $profViewModel.profile.address)
+                TextField("Address", text: $viewModel.profile.address)
                     .padding()
                     .font(.title2.bold())
             }.padding()
             
             // Table with orders
             List {
-                if profViewModel.orders.count == 0 {
+                if viewModel.orders.count == 0 {
                     Text("Your orders")
                 } else {
-                    ForEach(profViewModel.orders, id: \.id) { order in
+                    ForEach(viewModel.orders, id: \.id) { order in
                         OrderCell(order: order)
                     }
                 }
@@ -103,11 +103,11 @@ struct ProfileView: View {
         }
         .onSubmit {
             print("On Submit")
-//            viewModel.setProfile()
+//            viewModel.setProfile
         }
         .onAppear {
 //            viewModel.getProfile()
-            profViewModel.getOrders()
+//            viewModel.getOrders()
         }
     }
         
@@ -115,7 +115,7 @@ struct ProfileView: View {
 
 struct ProfileView_Previews: PreviewProvider {
     static var previews: some View {
-        ProfileView(profViewModel: ProfileViewModel(profile: MWUser(id: "",
+        ProfileView(viewModel: ProfileViewModel(profile: MWUser(id: "",
                                                                 name: "Name",
                                                                 phone: 380503180045,
                                                                 address: "Address")))

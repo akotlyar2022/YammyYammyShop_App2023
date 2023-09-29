@@ -57,6 +57,7 @@
 		FA33B8F62AC0794700EC7461 /* DBService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA33B8F52AC0794700EC7461 /* DBService.swift */; };
 		FAA95DF82AC743C600697773 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA95DF72AC743C600697773 /* ImagePicker.swift */; };
 		FAA95DFA2AC7476800697773 /* AddProductView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA95DF92AC7476800697773 /* AddProductView.swift */; };
+		FAA95DFC2AC7697800697773 /* StorageSevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA95DFB2AC7697800697773 /* StorageSevice.swift */; };
 		FAE9744A2AC093E400CC1F75 /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE974492AC093E400CC1F75 /* ProfileViewModel.swift */; };
 		FAE9744C2AC0BA2900CC1F75 /* Order.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE9744B2AC0BA2900CC1F75 /* Order.swift */; };
 		FAE9744E2AC0C36700CC1F75 /* OrderStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE9744D2AC0C36600CC1F75 /* OrderStatus.swift */; };
@@ -92,6 +93,7 @@
 		FA33B8F52AC0794700EC7461 /* DBService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBService.swift; sourceTree = "<group>"; };
 		FAA95DF72AC743C600697773 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		FAA95DF92AC7476800697773 /* AddProductView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddProductView.swift; sourceTree = "<group>"; };
+		FAA95DFB2AC7697800697773 /* StorageSevice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageSevice.swift; sourceTree = "<group>"; };
 		FAE974492AC093E400CC1F75 /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
 		FAE9744B2AC0BA2900CC1F75 /* Order.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Order.swift; sourceTree = "<group>"; };
 		FAE9744D2AC0C36600CC1F75 /* OrderStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderStatus.swift; sourceTree = "<group>"; };
@@ -235,6 +237,7 @@
 			isa = PBXGroup;
 			children = (
 				FA33B8EE2AC0327100EC7461 /* AuthService.swift */,
+				FAA95DFB2AC7697800697773 /* StorageSevice.swift */,
 				FA33B8F52AC0794700EC7461 /* DBService.swift */,
 			);
 			path = Services;
@@ -372,6 +375,7 @@
 				FAA95DFA2AC7476800697773 /* AddProductView.swift in Sources */,
 				FAE9744E2AC0C36700CC1F75 /* OrderStatus.swift in Sources */,
 				FA33B8AE2ABF152800EC7461 /* ProductDetailViewModel.swift in Sources */,
+				FAA95DFC2AC7697800697773 /* StorageSevice.swift in Sources */,
 				FA33B8B22ABF457900EC7461 /* Position.swift in Sources */,
 				FA33B8A02ABEC12000EC7461 /* ProfileView.swift in Sources */,
 				FAF2ACFF2AC4A51600D70C6D /* OrderView.swift in Sources */,

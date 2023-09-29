@@ -9,7 +9,7 @@ import SwiftUI
 
 struct MainTapBar: View {
     
-    var mainTapBarViewModel: MainTapBarViewModel
+    var viewModel: MainTapBarViewModel
     
     var body: some View {
         TabView {
@@ -22,14 +22,14 @@ struct MainTapBar: View {
                         Text("Catalog")
                     }
                 }
-            CartView(cartViewModel: CartViewModel.shared)
+            CartView(viewModel: CartViewModel.shared)
                 .tabItem {
                     VStack {
                         Image(systemName: "cart")
                         Text("Cart")
                     }
                 }
-            ProfileView(profViewModel: ProfileViewModel(profile: MWUser(id: "",
+            ProfileView(viewModel: ProfileViewModel(profile: MWUser(id: "",
                                                                       name: "Name",
                                                                       phone: 380503180045,
                                                                       address: "Address")))

@@ -12,8 +12,9 @@ struct AddProductView: View {
     @State private var showImagePicker = false
     @State private var image = UIImage(named: "addNewProduct")!
     @State private var title: String = ""
-    @State private var price: Double = 0
+    @State private var price: Double? = 0
     @State private var description: String = ""
+    @Environment (\.dismiss) var dismiss
     
     var body: some View {
         VStack {
@@ -70,7 +71,26 @@ struct AddProductView: View {
             }
             Spacer()
             Button {
-                print("Save")
+                
+                guard let price = price else {
+                    print("Not able show the price from TextField")
+                    return
+                }
+                let product = Product(id: UUID().uuidString, title: title, price: price, description: description)
+                guard let imageData = image.jpegData(compressionQuality: 0.5) else { return }
+                DBService.sharedDB.setProduct(product: product, image: imageData) { result in
+                    switch result {
+                        
+                    case .success(let product):
+                        print(product.title)
+                        dismiss()
+                    case .failure(let error):
+                        print(error.localizedDescription)
+                    }
+                }
+                
+                
+                
             } label: {
                 Text("Save").font(.title2).bold()
                     .padding()
