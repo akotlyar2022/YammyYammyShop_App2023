@@ -14,7 +14,7 @@ struct OrderCell: View {
     var body: some View {
         HStack {
             Text("\(order.date)")
-            Text("\(order.cost)")
+            Text("\(Int(order.cost))")
                 .bold()
                 .frame(width: 90)
             Text("\(order.status)")

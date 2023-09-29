@@ -55,6 +55,8 @@
 		FA33B8F22AC04EE400EC7461 /* MainTapBarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA33B8F12AC04EE300EC7461 /* MainTapBarViewModel.swift */; };
 		FA33B8F42AC0778100EC7461 /* MWUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA33B8F32AC0778100EC7461 /* MWUser.swift */; };
 		FA33B8F62AC0794700EC7461 /* DBService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA33B8F52AC0794700EC7461 /* DBService.swift */; };
+		FAA95DF82AC743C600697773 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA95DF72AC743C600697773 /* ImagePicker.swift */; };
+		FAA95DFA2AC7476800697773 /* AddProductView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA95DF92AC7476800697773 /* AddProductView.swift */; };
 		FAE9744A2AC093E400CC1F75 /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE974492AC093E400CC1F75 /* ProfileViewModel.swift */; };
 		FAE9744C2AC0BA2900CC1F75 /* Order.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE9744B2AC0BA2900CC1F75 /* Order.swift */; };
 		FAE9744E2AC0C36700CC1F75 /* OrderStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE9744D2AC0C36600CC1F75 /* OrderStatus.swift */; };
@@ -88,6 +90,8 @@
 		FA33B8F12AC04EE300EC7461 /* MainTapBarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTapBarViewModel.swift; sourceTree = "<group>"; };
 		FA33B8F32AC0778100EC7461 /* MWUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MWUser.swift; sourceTree = "<group>"; };
 		FA33B8F52AC0794700EC7461 /* DBService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBService.swift; sourceTree = "<group>"; };
+		FAA95DF72AC743C600697773 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
+		FAA95DF92AC7476800697773 /* AddProductView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddProductView.swift; sourceTree = "<group>"; };
 		FAE974492AC093E400CC1F75 /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
 		FAE9744B2AC0BA2900CC1F75 /* Order.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Order.swift; sourceTree = "<group>"; };
 		FAE9744D2AC0C36600CC1F75 /* OrderStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderStatus.swift; sourceTree = "<group>"; };
@@ -194,6 +198,7 @@
 			isa = PBXGroup;
 			children = (
 				FA33B8A42ABECF7200EC7461 /* ProductCell.swift */,
+				FAA95DF72AC743C600697773 /* ImagePicker.swift */,
 				FA33B8B32ABF53D800EC7461 /* PositionCell.swift */,
 				FAE9744F2AC332AC00CC1F75 /* OrderCell.swift */,
 			);
@@ -240,6 +245,7 @@
 			children = (
 				FAF2ACF92AC49EF900D70C6D /* AdminOrdersView.swift */,
 				FAF2ACFE2AC4A51600D70C6D /* OrderView.swift */,
+				FAA95DF92AC7476800697773 /* AddProductView.swift */,
 			);
 			name = AdminInterface;
 			sourceTree = "<group>";
@@ -350,6 +356,7 @@
 				FA33B8B02ABF453700EC7461 /* CartViewModel.swift in Sources */,
 				FAF2ACFD2AC4A07F00D70C6D /* AdminOrdersViewModel.swift in Sources */,
 				FAE9744A2AC093E400CC1F75 /* ProfileViewModel.swift in Sources */,
+				FAA95DF82AC743C600697773 /* ImagePicker.swift in Sources */,
 				FAE9744C2AC0BA2900CC1F75 /* Order.swift in Sources */,
 				FA33B8F22AC04EE400EC7461 /* MainTapBarViewModel.swift in Sources */,
 				FA33B8F62AC0794700EC7461 /* DBService.swift in Sources */,
@@ -362,6 +369,7 @@
 				FAF2ACFA2AC49EF900D70C6D /* AdminOrdersView.swift in Sources */,
 				FA33B8F42AC0778100EC7461 /* MWUser.swift in Sources */,
 				FAE974502AC332AD00CC1F75 /* OrderCell.swift in Sources */,
+				FAA95DFA2AC7476800697773 /* AddProductView.swift in Sources */,
 				FAE9744E2AC0C36700CC1F75 /* OrderStatus.swift in Sources */,
 				FA33B8AE2ABF152800EC7461 /* ProductDetailViewModel.swift in Sources */,
 				FA33B8B22ABF457900EC7461 /* Position.swift in Sources */,
@@ -509,6 +517,8 @@
 				DEVELOPMENT_TEAM = 88B6FV9G4B;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSCameraUsageDescription = "Do you give access to the camera?";
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "Do you give access to the photo gallery?";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -538,6 +548,8 @@
 				DEVELOPMENT_TEAM = 88B6FV9G4B;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSCameraUsageDescription = "Do you give access to the camera?";
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "Do you give access to the photo gallery?";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

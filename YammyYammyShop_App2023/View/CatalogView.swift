@@ -22,7 +22,7 @@ struct CatalogView: View {
                             NavigationLink {
                                 
                                 let viewModel = ProductDetailViewModel(product: item)
-                                ProductDetailView(viewModel: viewModel)
+                                ProductDetailView(prodViewModel: viewModel)
                             } label: {
                                 ProductCell(product: item)
                             }
@@ -40,7 +40,7 @@ struct CatalogView: View {
                             item in
                             NavigationLink {
                                 let viewModel = ProductDetailViewModel(product: item)
-                                ProductDetailView(viewModel: viewModel)
+                                ProductDetailView(prodViewModel: viewModel)
                             } label: {
                                 ProductCell(product: item)
                             }

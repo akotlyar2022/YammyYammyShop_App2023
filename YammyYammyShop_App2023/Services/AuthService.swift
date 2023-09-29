@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import Firebase
 import FirebaseAuth
 
 class AuthService {
@@ -14,9 +13,9 @@ class AuthService {
     
     private init() {}
     
-    private let auth = Auth.auth()
+    private let auth = Auth.auth() // List vith users
     
-    var currentUser: User? {
+    var currentUser: User? { // User - Object from Firebase
         return auth.currentUser
         
     }

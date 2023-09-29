@@ -15,6 +15,7 @@ struct AuthView: View {
     @State private var password = ""
     @State private var confirmPassword = ""
     @State private var isTabViewShow = false
+    
     @State private var isShowAlert = false
     @State private var alertMessage = ""
     
@@ -158,6 +159,13 @@ struct AuthView: View {
     }
 }
 
-#Preview {
-    AuthView()
+struct ContentView_Previews: PreviewProvider {
+    static var previews: some View {
+        AuthView()
+    }
 }
+
+
+//#Preview {
+//    AuthView()
+//}

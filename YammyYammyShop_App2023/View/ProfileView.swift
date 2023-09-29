@@ -97,7 +97,7 @@ struct ProfileView: View {
                         Text("Yes")
                     }
                 }
-                .fullScreenCover(isPresented: $isAuthViewPresented) {
+                .fullScreenCover(isPresented: $isAuthViewPresented, onDismiss: nil) {
                     AuthView()
             }
         }
@@ -106,8 +106,8 @@ struct ProfileView: View {
 //            viewModel.setProfile()
         }
         .onAppear {
-//            self.ViewModel.getProfile()
-//            self.profViewModel.getOrders()
+//            viewModel.getProfile()
+            profViewModel.getOrders()
         }
     }
         

@@ -9,7 +9,7 @@ import SwiftUI
 
 struct OrderView: View {
     
-    @StateObject var ordViewModel: OrderViewModel
+    @StateObject var orderViewModel: OrderViewModel
     
     var statuses: [String] {
         var sts = [String]()
@@ -23,16 +23,16 @@ struct OrderView: View {
     var body: some View {
         
         VStack(alignment: .leading, spacing: 8) {
-            Text("\(ordViewModel.user.name)")
+            Text("\(orderViewModel.user.name)")
                 .font(.title3).bold()
-            Text("+995 \(ordViewModel.user.phone)")
+            Text("+995 \(orderViewModel.user.phone)")
                 .bold()
-            Text("\(ordViewModel.user.address)")
+            Text("\(orderViewModel.user.address)")
         }.padding()
             .onAppear{
-                ordViewModel.getUserData()
+                orderViewModel.getUserData()
             }
-        Picker(selection: $ordViewModel.order.status) {
+        Picker(selection: $orderViewModel.order.status) {
             ForEach(statuses, id: \.self) { status in
                 Text(status)
             }
@@ -40,8 +40,8 @@ struct OrderView: View {
             Text("Order status")
         }
         .pickerStyle(.segmented)
-        .onChange(of: ordViewModel.order.status) { newStatus in
-            DBService.sharedDB.setOrder(order: ordViewModel.order) { result in
+        .onChange(of: orderViewModel.order.status) { newStatus in
+            DBService.sharedDB.setOrder(order: orderViewModel.order) { result in
                 switch result {
                     
                 case .success(let order):
@@ -54,17 +54,17 @@ struct OrderView: View {
 
             
         List {
-            ForEach(ordViewModel.order.positions, id: \.id) { position in
+            ForEach(orderViewModel.order.positions, id: \.id) { position in
                 PositionCell(position: position)
             }
-            Text("Total: \(ordViewModel.order.cost)")
+            Text("Total: \(orderViewModel.order.cost)")
         }
     }
 }
 
 struct OrderView_Previews: PreviewProvider {
     static var previews: some View {
-        OrderView(ordViewModel: OrderViewModel(order: Order(userID: "", date: Date(), status: "new")))
+        OrderView(orderViewModel: OrderViewModel(order: Order(userID: "", date: Date(), status: "new")))
     }
 }
 

@@ -91,7 +91,7 @@ class DBService {
             completion(.success(positions))
         }
     
-            func setProfile(user: MWUser,
+        func setProfile(user: MWUser,
                          completion: @escaping (Result<MWUser, Error>) -> Void) {
                 usersRef.document(user.id).setData(user.representation) { error in
                     if let error = error {

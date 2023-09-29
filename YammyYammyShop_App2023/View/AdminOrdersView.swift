@@ -12,6 +12,7 @@ struct AdminOrdersView: View {
     @StateObject var admViewModel = AdminOrdersViewModel()
     @State var isOrderViewShow = false
     @State var isShowAuthView = false
+    @State private var isShowAddProductView = false
     
 
     var body: some View {
@@ -23,14 +24,22 @@ struct AdminOrdersView: View {
                     isShowAuthView.toggle()
                 } label: {
                     Text("Exit")
-                        .foregroundColor(.red)
+                        .font(.title2)
+                        .frame(minWidth: 80)
+                        .foregroundColor(.white)
+                        .padding()
+                        .background(Color.red)
+                        .cornerRadius(15)
                 }
                 Spacer()
                 
                 Button {
-                    print("Add new ")
+                    isShowAddProductView.toggle()
+//                    print("Add new")
                 } label: {
-                    Text("Add new ")
+                    Text("Add new")
+                        .font(.title2)
+                        .frame(minWidth: 80)
                         .foregroundColor(.white)
                         .padding()
                         .background(Color.green)
@@ -43,6 +52,12 @@ struct AdminOrdersView: View {
                     admViewModel.getOrder()
                 } label: {
                     Text("Refresh")
+                        .font(.title2)
+                        .frame(minWidth: 80)
+                        .foregroundColor(.white)
+                        .padding()
+                        .background(Color.orange)
+                        .cornerRadius(15)
                 }
             }.padding()
             
@@ -61,10 +76,13 @@ struct AdminOrdersView: View {
                 }
                 .sheet(isPresented: $isOrderViewShow) {
                     let orderViewModel = OrderViewModel(order: admViewModel.currentOrder)
-                    OrderView(ordViewModel: orderViewModel)
+                    OrderView(orderViewModel: orderViewModel)
                 }
         }.fullScreenCover(isPresented: $isShowAuthView) {
             AuthView()
+        }
+        .sheet(isPresented: $isShowAddProductView) {
+            AddProductView()
         }
         
         
