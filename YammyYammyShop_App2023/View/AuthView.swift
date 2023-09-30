@@ -77,7 +77,6 @@ struct AuthView: View {
                             }
                         }
                         
-                        
                     } else {
                         print("Registration")
                         
@@ -89,7 +88,7 @@ struct AuthView: View {
                         
                         AuthService.sharedAuth.signUp(email: self.email, password: self.password) { result in
                             switch result {
-                            
+                                
                             case .success(let user):
                                 alertMessage = "You registered with \(user.email!)"
                                 self.isShowAlert.toggle()
@@ -102,10 +101,7 @@ struct AuthView: View {
                                 alertMessage = "Registration error \(error.localizedDescription)!"
                                 self.isShowAlert.toggle()
                             }
-                            
                         }
-                        
-                        
                     }
                 } label: {
                     Text(isAuth ? "Enter" : "Create account")
@@ -117,6 +113,7 @@ struct AuthView: View {
                         .padding(10)
                         .padding(.horizontal, 12)
                 }
+                
                 Button {
                     isAuth.toggle()
                 } label: {
@@ -159,13 +156,13 @@ struct AuthView: View {
     }
 }
 
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        AuthView()
-    }
-}
-
-
-//#Preview {
-//    AuthView()
+//struct ContentView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        AuthView()
+//    }
 //}
+
+
+#Preview {
+    AuthView()
+}

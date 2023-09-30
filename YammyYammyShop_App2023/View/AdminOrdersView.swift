@@ -89,12 +89,12 @@ struct AdminOrdersView: View {
     }
 }
 
-struct AdminOrdersView_Previews: PreviewProvider {
-    static var previews: some View {
-        AdminOrdersView()
-    }
-}
-
-//#Preview {
-//    AdminOrdersView()
+//struct AdminOrdersView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        AdminOrdersView()
+//    }
 //}
+
+#Preview {
+    AdminOrdersView()
+}

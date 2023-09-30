@@ -15,9 +15,9 @@ struct Order {
     var date: Date
     var status: String
     
-    var cost: Double {
+    var cost: Int {
         
-        var sum: Double = 0
+        var sum: Int = 0
         for position in positions {
             sum += position.cost
         }

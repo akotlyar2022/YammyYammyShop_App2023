@@ -103,11 +103,11 @@ struct ProfileView: View {
         }
         .onSubmit {
             print("On Submit")
-//            viewModel.setProfile
+            viewModel.getOrders()
         }
         .onAppear {
-//            viewModel.getProfile()
-//            viewModel.getOrders()
+            self.viewModel.getOrders()
+//            viewModel
         }
     }
         
@@ -116,9 +116,8 @@ struct ProfileView: View {
 struct ProfileView_Previews: PreviewProvider {
     static var previews: some View {
         ProfileView(viewModel: ProfileViewModel(profile: MWUser(id: "",
-                                                                name: "Name",
-                                                                phone: 380503180045,
-                                                                address: "Address")))
+                                                                name: "",
+                                                                phone: 0,
+                                                                address: "")))
     }
-    
 }

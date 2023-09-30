@@ -29,22 +29,15 @@ struct MainTapBar: View {
                         Text("Cart")
                     }
                 }
-            ProfileView(viewModel: ProfileViewModel(profile: MWUser(id: "",
-                                                                      name: "Name",
-                                                                      phone: 380503180045,
-                                                                      address: "Address")))
-                .tabItem {
-                    VStack {
-                        Image(systemName: "person.crop.circle")
-                        Text("Profile")
-                    }
+        ProfileView(viewModel: ProfileViewModel(profile: MWUser(id: "", name: "", phone: 0, address: "")))
+            .tabItem {
+                VStack {
+                    Image(systemName: "person.crop.circle")
+                    Text("Profile")
                 }
+            }
         }
     }
 }
 
-//struct MainTapBar_Previews: PreviewProvider {
-//    static var previews: some View {
-//        MainTapBar(mainTapBarViewModel: MainTapBarViewModel(user: user()))
-//    }
-//}
+

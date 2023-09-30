@@ -33,8 +33,9 @@ struct CartView: View {
                 Text ("Total:")
                     .font(.largeTitle.bold())
                 Spacer()
-                Text ("\(Int(self.viewModel.cost)) $")
-                    .font(.largeTitle.bold())            }.padding()
+                Text ("\(self.viewModel.cost) $")
+                    .font(.largeTitle.bold())
+            }.padding()
             
             HStack(spacing: 24) {
                 Button {
@@ -47,7 +48,6 @@ struct CartView: View {
                         .foregroundColor(.white)
                         .background(Color(.red))
                         .cornerRadius(20)
-                        
                 }
                 
                 Button {
@@ -76,7 +76,6 @@ struct CartView: View {
                         .frame(maxWidth: .infinity)
                         .background(Color(.green))
                         .cornerRadius(20)
-                        
                 }
             }.padding()
         }

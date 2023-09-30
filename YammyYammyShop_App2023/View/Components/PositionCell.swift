@@ -17,8 +17,8 @@ struct PositionCell: View {
             Text(position.product.title)
                 .fontWeight(.bold)
             Spacer()
-            Text("\(Int(position.count)) boxes")
-            Text("\(Int(position.cost)) $")
+            Text("\(position.count) kg")
+            Text("\(position.cost) $")
                 .frame(width: 85, alignment: .trailing)
         }.padding(.horizontal)
         
@@ -26,5 +26,5 @@ struct PositionCell: View {
 }
 
 #Preview {
-    PositionCell(position: Position(id: UUID().uuidString, product: Product(id: UUID().uuidString, title: "Banana", imageUrl: "productOrange", price: 30, description: "Super Orange"), count: 3.0))
+    PositionCell(position: Position(id: UUID().uuidString, product: Product(id: UUID().uuidString, title: "", imageUrl: "", price: 0, description: ""), count: 0))
 }

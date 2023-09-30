@@ -30,7 +30,6 @@ struct YammyYammyShop_App2023App: App {
             } else {
                 AuthView()
             }
-            
         }
     }
     

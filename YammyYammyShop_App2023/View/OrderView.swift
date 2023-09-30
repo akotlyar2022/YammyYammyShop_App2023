@@ -25,7 +25,7 @@ struct OrderView: View {
         VStack(alignment: .leading, spacing: 8) {
             Text("\(viewModel.user.name)")
                 .font(.title3).bold()
-            Text("+995 \(viewModel.user.phone)")
+            Text("\(viewModel.user.phone)")
                 .bold()
             Text("\(viewModel.user.address)")
         }.padding()
@@ -62,12 +62,12 @@ struct OrderView: View {
     }
 }
 
-struct OrderView_Previews: PreviewProvider {
-    static var previews: some View {
-        OrderView(viewModel: OrderViewModel(order: Order(userID: "", date: Date(), status: "new")))
-    }
-}
-
-//#Preview {
-//    OrderView()
+//struct OrderView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        OrderView(viewModel: OrderViewModel(order: Order(userID: "", date: Date(), status: "new")))
+//    }
 //}
+
+#Preview {
+    OrderView(viewModel: OrderViewModel(order: Order(userID: "", date: Date(), status: "new")))
+}

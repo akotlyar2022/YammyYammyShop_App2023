@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ProductDetailView: View {
     
-    var viewModel: ProductDetailViewModel
+    @State var viewModel: ProductDetailViewModel
     @State var size = "1 kg Box"
     @State var count = 1
     
@@ -18,7 +18,7 @@ struct ProductDetailView: View {
     var body: some View {
         VStack {
             Spacer()
-            Image("productOrange")
+            Image(uiImage: self.viewModel.image)
                 .resizable()
                 .frame(maxWidth: .infinity, maxHeight: 300)
                 .shadow(color: .orange,radius: 20)
@@ -29,28 +29,30 @@ struct ProductDetailView: View {
                     .font(.title.bold())
                     .foregroundColor(/*@START_MENU_TOKEN@*/.blue/*@END_MENU_TOKEN@*/)
                 Spacer()
-                Text("Price: \(Int(viewModel.getPrice(size: self.size))) $")
+                Text("Price: \(viewModel.getPrice(size: self.size)) $")
                     .font(.title.bold())
                     .foregroundColor(.green)
                 Spacer()
             }
             Spacer()
             Text("\(viewModel.product.description)")
-                .font(.title.bold())
+                .font(.title)
                 .foregroundColor(.black)
                 .padding()
             Spacer()
             
-            Picker("BoxSize", selection: $size) {
-                ForEach(viewModel.sizes, id: \.self) { item in
-                    Text(item)
-                }
-            }.pickerStyle(.menu)
-                //.padding()
-                //.border(.blue)
+            //New Feachure to next sprint - boxPackages (1, 5, 10, 20) kg
+//            Picker("BoxSize", selection: $size) {
+//                ForEach(viewModel.sizes, id: \.self) { item in
+//                    Text(item)
+//                }
+//            }.pickerStyle(.menu)
+//                .padding()
+//                .border(.blue)
             HStack {
-                Stepper("Quantity Boxes", value: $count, in: 1...20)
+                Stepper("Weight: kg", value: $count, in: 1...20)
                     .padding(.horizontal, 20)
+//                    .frame(minWidth: 30)
                 Text("\(self.count)")
                     .padding(20)
                     .font(.title.bold())
@@ -60,7 +62,7 @@ struct ProductDetailView: View {
                 Button {
                     var position = Position(id: UUID().uuidString,
                                             product: viewModel.product,
-                                            count: Double(self.count))
+                                            count: self.count)
                     position.product.price = viewModel.getPrice(size: size)
                     
                     CartViewModel.shared.addPosition(position)
@@ -72,6 +74,9 @@ struct ProductDetailView: View {
                         .foregroundColor(.red)
                         .font(.title.bold())
                 }
+                .onAppear {
+                    self.viewModel.getImage()
+                }
             
             Spacer()
         }
@@ -80,11 +85,6 @@ struct ProductDetailView: View {
 
 struct ProductDetailView_Previews: PreviewProvider {
     static var previews: some View {
-        ProductDetailView(viewModel: ProductDetailViewModel(product: Product(id: "001",
-                                                                             title: "Orange",
-                                                                             imageUrl: "NotFound",
-                                                                             price: 2.0,
-                                                                             description: "Best oranges in Georgia. Grow up in region Ajara. Very very very tasty!")
-                                                           ))
+        ProductDetailView(viewModel: ProductDetailViewModel(product: Product(id: "001", title: "", imageUrl: "", price: 0, description: "")))
     }
 }

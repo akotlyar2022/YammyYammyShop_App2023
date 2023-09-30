@@ -12,7 +12,7 @@ struct AddProductView: View {
     @State private var showImagePicker = false
     @State private var image = UIImage(named: "addNewProduct")!
     @State private var title: String = ""
-    @State private var price: Double? = 0
+    @State private var price: Int? = 0
     @State private var description: String = ""
     @Environment (\.dismiss) var dismiss
     
@@ -76,9 +76,13 @@ struct AddProductView: View {
                     print("Not able show the price from TextField")
                     return
                 }
+                
                 let product = Product(id: UUID().uuidString, title: title, price: price, description: description)
+                
                 guard let imageData = image.jpegData(compressionQuality: 0.5) else { return }
+                
                 DBService.sharedDB.setProduct(product: product, image: imageData) { result in
+                    
                     switch result {
                         
                     case .success(let product):
@@ -89,8 +93,6 @@ struct AddProductView: View {
                     }
                 }
                 
-                
-                
             } label: {
                 Text("Save").font(.title2).bold()
                     .padding()
@@ -99,19 +101,17 @@ struct AddProductView: View {
                     .foregroundColor(.white)
                     .cornerRadius(20)
             }
-
-            
         }.frame(alignment: .leading)
     }
 }
 
-struct AddProductView_Previews: PreviewProvider {
-    static var previews: some View {
-        AddProductView()
-    }
-}
-
-//
-//#Preview {
-//    AddProductView()
+//struct AddProductView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        AddProductView()
+//    }
 //}
+
+
+#Preview {
+    AddProductView()
+}

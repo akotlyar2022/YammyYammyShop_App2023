@@ -17,8 +17,10 @@ class AdminOrdersViewModel: ObservableObject {
             switch result {
             case .success(let orders):
                 self.orders = orders
+                
                 for (index, order) in self.orders.enumerated() {
                     DBService.sharedDB.getPositions(by: order.id) { result in
+                        
                         switch result {
                         case .success(let positions):
                             self.orders[index].positions = positions
@@ -30,9 +32,6 @@ class AdminOrdersViewModel: ObservableObject {
                 }
             case .failure(let error):
                 print(error.localizedDescription)
-
-                
-                
             }
         }
     }

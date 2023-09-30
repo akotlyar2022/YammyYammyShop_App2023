@@ -9,9 +9,9 @@ import Foundation
 import FirebaseFirestore
 
 enum OrderStatus: String, CaseIterable {
-    case new = "New Order"
-    case packing = "Order is Packing"
-    case delivering = "Order is Delivering"
-    case completed = "Order was Completed"
-    case canceled = "Order was Canceled"
+    case new = "New"
+    case packing = "Pack"
+    case delivering = "Deliver"
+    case completed = "Complete"
+    case canceled = "Cancel"
 }
