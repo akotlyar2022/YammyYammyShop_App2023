@@ -14,7 +14,8 @@ struct AuthView: View {
     @State private var email = ""
     @State private var password = ""
     @State private var confirmPassword = ""
-    @State private var isTabViewShow = false
+    
+    @State private var isTabViewShow = false // sostoyanie perehoda na MainTapView
     
     @State private var isShowAlert = false
     @State private var alertMessage = ""
@@ -27,7 +28,7 @@ struct AuthView: View {
                 .padding(.horizontal, 15)
                 .padding(.top, 50)
                 //.font(.largeTitle.bold())
-                .font(.system(size: 45, weight: .bold))
+                .font(.system(size: 50, weight: .bold))
                 //.background(Color("whiteAlfa"))
                 .cornerRadius(20)
                 .foregroundColor(.red)
@@ -82,7 +83,7 @@ struct AuthView: View {
                         
                         guard password == confirmPassword else {
                             self.alertMessage = "The entered passwords do not match"
-                            self.isShowAlert.toggle()
+                            self.isShowAlert.toggle() // Esli parol ok toggle pereklyuchaet na View MainTapBar
                             return
                         }
                         
@@ -144,7 +145,7 @@ struct AuthView: View {
                 .blur(radius: isAuth ? 0 : 7)
             )
             .animation(Animation.easeInOut(duration: 0.5), value: isAuth)
-            .fullScreenCover(isPresented: $isTabViewShow) {
+            .fullScreenCover(isPresented: $isTabViewShow) { // perehod na MainTapBar
                 
                 if AuthService.sharedAuth.currentUser?.uid == "M6yPvss3nSbgW0h1d6NwM4vvAHS2" {
                     AdminOrdersView()

@@ -13,12 +13,22 @@ struct PositionCell: View {
     
     var body: some View {
         
+        
+//        HStack {
+//            Text("Title        Number of boxes         Sum")
+//                .fontWeight(.bold)
+//                .foregroundColor(.blue)
+//                .frame(alignment: .center)
+//        }.padding(20)
+        
         HStack {
-            Text(position.product.title)
+            Text("\(position.product.title)")
                 .fontWeight(.bold)
             Spacer()
-            Text("\(position.count) kg")
-            Text("\(position.cost) $")
+            Text("\(position.count)")
+//            Text("Price:\(position.product.price)")
+            Spacer()
+            Text("\(position.cost)")
                 .frame(width: 85, alignment: .trailing)
         }.padding(.horizontal)
         

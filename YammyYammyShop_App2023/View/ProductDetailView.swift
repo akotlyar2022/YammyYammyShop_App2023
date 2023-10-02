@@ -9,11 +9,12 @@ import SwiftUI
 
 struct ProductDetailView: View {
     
+    
     @State var viewModel: ProductDetailViewModel
     @State var size = "1 kg Box"
     @State var count = 1
     
-    @Environment(\.presentationMode) var presentationMode
+    @Environment(\.presentationMode) var presentationMode // enviroment property
     
     var body: some View {
         VStack {
@@ -26,12 +27,14 @@ struct ProductDetailView: View {
             HStack {
                 Spacer()
                 Text("\(viewModel.product.title)")
-                    .font(.title.bold())
+                    .font(.title2.bold())
                     .foregroundColor(/*@START_MENU_TOKEN@*/.blue/*@END_MENU_TOKEN@*/)
                 Spacer()
-                Text("Price: \(viewModel.getPrice(size: self.size)) $")
-                    .font(.title.bold())
-                    .foregroundColor(.green)
+                    Text("Price: \(viewModel.getPrice(size: self.size))")
+                        .font(.title2.bold())
+                        .foregroundColor(.green)
+                    
+                
                 Spacer()
             }
             Spacer()
@@ -41,38 +44,48 @@ struct ProductDetailView: View {
                 .padding()
             Spacer()
             
-            //New Feachure to next sprint - boxPackages (1, 5, 10, 20) kg
-//            Picker("BoxSize", selection: $size) {
-//                ForEach(viewModel.sizes, id: \.self) { item in
-//                    Text(item)
-//                }
-//            }.pickerStyle(.menu)
-//                .padding()
-//                .border(.blue)
             HStack {
-                Stepper("Weight: kg", value: $count, in: 1...20)
-                    .padding(.horizontal, 20)
+                Picker("BoxSize", selection: $size) {
+                    ForEach(viewModel.sizes, id: \.self) { item in
+                        Text(item)
+                    }
+                }.pickerStyle(.menu)
+                    .padding(4)
+                Stepper("", value: $count, in: 1...20)
+                    .padding(.horizontal)
 //                    .frame(minWidth: 30)
                 Text("\(self.count)")
-                    .padding(20)
-                    .font(.title.bold())
-                    .foregroundColor(.green)
+                    .padding(10)
+                    .font(.title2)
             }
+            .padding()
                 Spacer()
-                Button {
+            
+            Text("Total: \(viewModel.getPrice(size: self.size) * count)")
+                .font(.title2.bold())
+                .foregroundColor(.red)
+            
+            Button { // add position from DetailView and send to CartView
                     var position = Position(id: UUID().uuidString,
                                             product: viewModel.product,
                                             count: self.count)
                     position.product.price = viewModel.getPrice(size: size)
                     
                     CartViewModel.shared.addPosition(position)
-                    presentationMode.wrappedValue.dismiss()
+                    presentationMode.wrappedValue.dismiss() // close view vith enviroment property
                 } label: {
                     Text("Add to cart")
+//                        .padding()
+//                        .cornerRadius(10)
+//                        .foregroundColor(.blue)
+//                        .font(.title.bold())
+                        .font(.title)
+                        .fontWeight(.bold)
                         .padding()
-                        .cornerRadius(10)
-                        .foregroundColor(.red)
-                        .font(.title.bold())
+                        .foregroundColor(.white)
+                        .frame(maxWidth: 200)
+                        .background(Color(.blue))
+                        .cornerRadius(20)
                 }
                 .onAppear {
                     self.viewModel.getImage()

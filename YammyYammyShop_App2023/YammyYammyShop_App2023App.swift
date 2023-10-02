@@ -9,7 +9,7 @@ import SwiftUI
 import Firebase
 import FirebaseAuth
 
-let screen = UIScreen.main.bounds
+let screen = UIScreen.main.bounds // main screen sizes
 
 @main
 struct YammyYammyShop_App2023App: App {

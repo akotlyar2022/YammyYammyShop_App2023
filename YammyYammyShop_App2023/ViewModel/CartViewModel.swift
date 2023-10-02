@@ -9,7 +9,7 @@ import Foundation
 
 class CartViewModel: ObservableObject {
     
-    static let shared = CartViewModel()
+    static let shared = CartViewModel() // Singleton
     
     private init() {}
     
@@ -24,8 +24,6 @@ class CartViewModel: ObservableObject {
         }
         return sum
     }
-    
-    
     
     func addPosition(_ position: Position) {
         self.positions.append(position)

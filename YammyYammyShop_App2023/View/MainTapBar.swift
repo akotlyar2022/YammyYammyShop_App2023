@@ -13,7 +13,7 @@ struct MainTapBar: View {
     
     var body: some View {
         TabView {
-            NavigationView {
+            NavigationView { // Wrap it in Navigation View for transition
                 CatalogView()
             }
                 .tabItem {

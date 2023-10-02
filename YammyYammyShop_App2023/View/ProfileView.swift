@@ -107,7 +107,7 @@ struct ProfileView: View {
         }
         .onAppear {
             self.viewModel.getOrders()
-//            viewModel
+//            self.viewModel.setProfile()
         }
     }
         

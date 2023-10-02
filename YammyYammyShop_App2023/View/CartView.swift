@@ -13,27 +13,31 @@ struct CartView: View {
     
     var body: some View {
         
+        
+        
         VStack {
+            
+            
             List(viewModel.positions) { position in
                 PositionCell(position: position)
-                    .swipeActions {
+                    .swipeActions { // add swipe delete order from cart (context buttons)
                         Button {
                             viewModel.positions.removeAll { pos in
                                 pos.id == position.id
                             }
                         } label: {
-                            Text("Delete")
+                            Text("Delete order")
                         }.tint(.red)
                     }
             }
-            .listStyle(.plain)
+            .listStyle(.sidebar)
             .navigationTitle("Cart")
             
             HStack {
                 Text ("Total:")
                     .font(.largeTitle.bold())
                 Spacer()
-                Text ("\(self.viewModel.cost) $")
+                Text ("\(self.viewModel.cost)")
                     .font(.largeTitle.bold())
             }.padding()
             
@@ -46,7 +50,7 @@ struct CartView: View {
                         .fontWeight(.bold)
                         .padding()
                         .foregroundColor(.white)
-                        .background(Color(.red))
+                        .background(Color(.gray))
                         .cornerRadius(20)
                 }
                 
@@ -82,11 +86,11 @@ struct CartView: View {
     }
 }
 
-//struct CartView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        CartView(viewModel: CartViewModel.shared)
-//    }
-//}
-#Preview {
-    CartView(viewModel: CartViewModel.shared)
+struct CartView_Previews: PreviewProvider {
+    static var previews: some View {
+        CartView(viewModel: CartViewModel.shared)
+    }
 }
+//#Preview {
+//    CartView(viewModel: CartViewModel.shared)
+//}
