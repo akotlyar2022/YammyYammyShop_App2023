@@ -25,7 +25,7 @@ struct ProfileView: View {
                 Image("customer")
                     .resizable()
                     .frame(width: 80, height: 80)
-                    .onTapGesture {
+                    .onTapGesture { // Change foto profile from Photo or Galery with confirmation dialog
                         isAvaAlertPresented.toggle()
                     }
                     .confirmationDialog("Foto", isPresented: $isAvaAlertPresented) {
@@ -45,13 +45,13 @@ struct ProfileView: View {
                 Spacer(minLength: 20)
                 
                 VStack(alignment: .leading, spacing: 12) {
-                    TextField("Name", text: $viewModel.profile.name)
+                    TextField("Enter name", text: $viewModel.profile.name)
                         .font(.title.bold())
                         .foregroundColor(/*@START_MENU_TOKEN@*/.blue/*@END_MENU_TOKEN@*/)
                     
                     HStack {
-                        Text("+995")
-                        TextField("Phone", value: $viewModel.profile.phone, format: .number)
+                        Text("+")
+                        TextField("Enter phone number", text: $viewModel.profile.phone)
                     }.font(.title2.bold())
                 }.padding(30)
             }
@@ -61,7 +61,7 @@ struct ProfileView: View {
                     .padding()
                     .font(.title.bold())
                     .foregroundColor(.blue)
-                TextField("Address", text: $viewModel.profile.address)
+                TextField("Enter delivery address", text: $viewModel.profile.address)
                     .padding()
                     .font(.title2.bold())
             }.padding()
@@ -76,7 +76,7 @@ struct ProfileView: View {
                     }
                 }
                 
-            }.listStyle(.plain)
+            }.listStyle(.sidebar)
             
             Button {
                 isQuitAlertPresented.toggle()
@@ -89,7 +89,7 @@ struct ProfileView: View {
                     .font(.title.bold())
                     .cornerRadius(15)
             }.padding()
-                .confirmationDialog("Log out of your profile", isPresented: $isQuitAlertPresented) {
+                .confirmationDialog("Log out of your profile?", isPresented: $isQuitAlertPresented, titleVisibility: .visible){
                     
                     Button {
                         isAuthViewPresented.toggle()
@@ -99,15 +99,16 @@ struct ProfileView: View {
                 }
                 .fullScreenCover(isPresented: $isAuthViewPresented, onDismiss: nil) {
                     AuthView()
+                
             }
         }
         .onSubmit {
             print("On Submit")
-            viewModel.getOrders()
+            viewModel.setProfile()
         }
         .onAppear {
+            self.viewModel.getProfile()
             self.viewModel.getOrders()
-//            self.viewModel.setProfile()
         }
     }
         
@@ -115,9 +116,6 @@ struct ProfileView: View {
 
 struct ProfileView_Previews: PreviewProvider {
     static var previews: some View {
-        ProfileView(viewModel: ProfileViewModel(profile: MWUser(id: "",
-                                                                name: "",
-                                                                phone: 0,
-                                                                address: "")))
+        ProfileView(viewModel: ProfileViewModel(profile: MWUser(id: "", name: "", phone: "", address: "")))
     }
 }

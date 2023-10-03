@@ -67,6 +67,7 @@ struct AuthView: View {
                 Button {
                     if isAuth {
                         print("Client authorization throw Firebase")
+                        
                         AuthService.sharedAuth.signIn(email: self.email, password: self.password) { result in
                             switch result {
                                 
@@ -83,7 +84,7 @@ struct AuthView: View {
                         
                         guard password == confirmPassword else {
                             self.alertMessage = "The entered passwords do not match"
-                            self.isShowAlert.toggle() // Esli parol ok toggle pereklyuchaet na View MainTapBar
+                            self.isShowAlert.toggle() 
                             return
                         }
                         
@@ -145,13 +146,13 @@ struct AuthView: View {
                 .blur(radius: isAuth ? 0 : 7)
             )
             .animation(Animation.easeInOut(duration: 0.5), value: isAuth)
-            .fullScreenCover(isPresented: $isTabViewShow) { // perehod na MainTapBar
+            .fullScreenCover(isPresented: $isTabViewShow) { // perehod na MainTabBar
                 
                 if AuthService.sharedAuth.currentUser?.uid == "M6yPvss3nSbgW0h1d6NwM4vvAHS2" {
                     AdminOrdersView()
                 } else {
-                    let viewModel = MainTapBarViewModel(user: AuthService.sharedAuth.currentUser!)
-                    MainTapBar(viewModel: viewModel)
+                    let mainTabBarViewModel = MainTabBarViewModel(user: AuthService.sharedAuth.currentUser!)
+                    MainTabBar(viewModel: mainTabBarViewModel)
                 }
             }
     }

@@ -10,9 +10,10 @@ import FirebaseFirestore
 
 class DBService {
     
-    static let sharedDB = DBService()
-    private let db = Firestore.firestore()
+    static let sharedDB = DBService() // Singleton
+    private let db = Firestore.firestore() // our root folder in FirebaseFirestore
     
+    // links to folders "users", "orders", "products" in FirebaseFirestore
     private var usersRef: CollectionReference { return db.collection("users") }
     private var ordersRef: CollectionReference { return db.collection("orders") }
     private var productsRef: CollectionReference { return db.collection("products") }
@@ -117,7 +118,7 @@ class DBService {
                 guard let data = snap.data() else { return }
                 guard let userName = data["name"] as? String else { return }
                 guard let id = data["id"] as? String else { return }
-                guard let phone = data["phone"] as? Int else { return }
+                guard let phone = data["phone"] as? String else { return }
                 guard let address = data["address"] as? String else { return }
                 
                 let user = MWUser(id: id, name: userName, phone: phone, address: address)
@@ -165,6 +166,8 @@ class DBService {
             completion(.success(products))
         }
     }
+    
+    // setUser - put "user" into "users" in FirebaseFirestore
     
     func setUser(user: MWUser,
                  completion: @escaping (Result<MWUser, Error>) -> Void) {

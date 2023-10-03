@@ -12,7 +12,7 @@ import FirebaseFirestore
 class OrderViewModel: ObservableObject {
     
     @Published var order: Order
-    @Published var user = MWUser(id: "", name: "", phone: 0, address: "")
+    @Published var user = MWUser(id: "", name: "", phone: "", address: "")
     
     init(order: Order) {
         self.order = order

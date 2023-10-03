@@ -11,7 +11,7 @@
 		FA21F5762ABD920000ADFEEE /* AuthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA21F5752ABD920000ADFEEE /* AuthView.swift */; };
 		FA21F5782ABD920700ADFEEE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FA21F5772ABD920700ADFEEE /* Assets.xcassets */; };
 		FA21F57B2ABD920700ADFEEE /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FA21F57A2ABD920700ADFEEE /* Preview Assets.xcassets */; };
-		FA33B89A2ABEB67300EC7461 /* MainTapBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA33B8992ABEB67300EC7461 /* MainTapBar.swift */; };
+		FA33B89A2ABEB67300EC7461 /* MainTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA33B8992ABEB67300EC7461 /* MainTabBar.swift */; };
 		FA33B89C2ABEC0B400EC7461 /* CatalogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA33B89B2ABEC0B300EC7461 /* CatalogView.swift */; };
 		FA33B89E2ABEC10C00EC7461 /* CartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA33B89D2ABEC10C00EC7461 /* CartView.swift */; };
 		FA33B8A02ABEC12000EC7461 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA33B89F2ABEC12000EC7461 /* ProfileView.swift */; };
@@ -52,7 +52,7 @@
 		FA33B8EB2AC02D9B00EC7461 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = FA33B8EA2AC02D9B00EC7461 /* FirebaseStorage */; };
 		FA33B8ED2AC02D9B00EC7461 /* FirebaseStorageCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = FA33B8EC2AC02D9B00EC7461 /* FirebaseStorageCombine-Community */; };
 		FA33B8EF2AC0327200EC7461 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA33B8EE2AC0327100EC7461 /* AuthService.swift */; };
-		FA33B8F22AC04EE400EC7461 /* MainTapBarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA33B8F12AC04EE300EC7461 /* MainTapBarViewModel.swift */; };
+		FA33B8F22AC04EE400EC7461 /* MainTabBarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA33B8F12AC04EE300EC7461 /* MainTabBarViewModel.swift */; };
 		FA33B8F42AC0778100EC7461 /* MWUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA33B8F32AC0778100EC7461 /* MWUser.swift */; };
 		FA33B8F62AC0794700EC7461 /* DBService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA33B8F52AC0794700EC7461 /* DBService.swift */; };
 		FAA95DF82AC743C600697773 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA95DF72AC743C600697773 /* ImagePicker.swift */; };
@@ -74,7 +74,7 @@
 		FA21F5752ABD920000ADFEEE /* AuthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthView.swift; sourceTree = "<group>"; };
 		FA21F5772ABD920700ADFEEE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FA21F57A2ABD920700ADFEEE /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		FA33B8992ABEB67300EC7461 /* MainTapBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTapBar.swift; sourceTree = "<group>"; };
+		FA33B8992ABEB67300EC7461 /* MainTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBar.swift; sourceTree = "<group>"; };
 		FA33B89B2ABEC0B300EC7461 /* CatalogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogView.swift; sourceTree = "<group>"; };
 		FA33B89D2ABEC10C00EC7461 /* CartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartView.swift; sourceTree = "<group>"; };
 		FA33B89F2ABEC12000EC7461 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
@@ -88,7 +88,7 @@
 		FA33B8B32ABF53D800EC7461 /* PositionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PositionCell.swift; sourceTree = "<group>"; };
 		FA33B8B52AC02A7C00EC7461 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		FA33B8EE2AC0327100EC7461 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
-		FA33B8F12AC04EE300EC7461 /* MainTapBarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTapBarViewModel.swift; sourceTree = "<group>"; };
+		FA33B8F12AC04EE300EC7461 /* MainTabBarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarViewModel.swift; sourceTree = "<group>"; };
 		FA33B8F32AC0778100EC7461 /* MWUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MWUser.swift; sourceTree = "<group>"; };
 		FA33B8F52AC0794700EC7461 /* DBService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBService.swift; sourceTree = "<group>"; };
 		FAA95DF72AC743C600697773 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
@@ -186,7 +186,7 @@
 			children = (
 				FAF2ACFB2AC49F0800D70C6D /* AdminInterface */,
 				FA21F5752ABD920000ADFEEE /* AuthView.swift */,
-				FA33B8992ABEB67300EC7461 /* MainTapBar.swift */,
+				FA33B8992ABEB67300EC7461 /* MainTabBar.swift */,
 				FA33B89B2ABEC0B300EC7461 /* CatalogView.swift */,
 				FA33B8AB2ABF078400EC7461 /* ProductDetailView.swift */,
 				FA33B89D2ABEC10C00EC7461 /* CartView.swift */,
@@ -224,7 +224,7 @@
 			children = (
 				FA33B8A82ABEE44900EC7461 /* CatalogViewModel.swift */,
 				FAF2AD002AC4A54700D70C6D /* OrderViewModel.swift */,
-				FA33B8F12AC04EE300EC7461 /* MainTapBarViewModel.swift */,
+				FA33B8F12AC04EE300EC7461 /* MainTabBarViewModel.swift */,
 				FA33B8AD2ABF152800EC7461 /* ProductDetailViewModel.swift */,
 				FA33B8AF2ABF453600EC7461 /* CartViewModel.swift */,
 				FAE974492AC093E400CC1F75 /* ProfileViewModel.swift */,
@@ -361,11 +361,11 @@
 				FAE9744A2AC093E400CC1F75 /* ProfileViewModel.swift in Sources */,
 				FAA95DF82AC743C600697773 /* ImagePicker.swift in Sources */,
 				FAE9744C2AC0BA2900CC1F75 /* Order.swift in Sources */,
-				FA33B8F22AC04EE400EC7461 /* MainTapBarViewModel.swift in Sources */,
+				FA33B8F22AC04EE400EC7461 /* MainTabBarViewModel.swift in Sources */,
 				FA33B8F62AC0794700EC7461 /* DBService.swift in Sources */,
 				FA33B89E2ABEC10C00EC7461 /* CartView.swift in Sources */,
 				FA33B8AC2ABF078500EC7461 /* ProductDetailView.swift in Sources */,
-				FA33B89A2ABEB67300EC7461 /* MainTapBar.swift in Sources */,
+				FA33B89A2ABEB67300EC7461 /* MainTabBar.swift in Sources */,
 				FA21F5762ABD920000ADFEEE /* AuthView.swift in Sources */,
 				FA21F5742ABD920000ADFEEE /* YammyYammyShop_App2023App.swift in Sources */,
 				FA33B8B42ABF53D800EC7461 /* PositionCell.swift in Sources */,

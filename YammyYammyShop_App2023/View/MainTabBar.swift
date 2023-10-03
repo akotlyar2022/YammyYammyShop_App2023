@@ -7,9 +7,9 @@
 
 import SwiftUI
 
-struct MainTapBar: View {
+struct MainTabBar: View {
     
-    var viewModel: MainTapBarViewModel
+    var viewModel: MainTabBarViewModel
     
     var body: some View {
         TabView {
@@ -29,7 +29,7 @@ struct MainTapBar: View {
                         Text("Cart")
                     }
                 }
-        ProfileView(viewModel: ProfileViewModel(profile: MWUser(id: "", name: "", phone: 0, address: "")))
+        ProfileView(viewModel: ProfileViewModel(profile: MWUser(id: "", name: "", phone: "", address: "")))
             .tabItem {
                 VStack {
                     Image(systemName: "person.crop.circle")

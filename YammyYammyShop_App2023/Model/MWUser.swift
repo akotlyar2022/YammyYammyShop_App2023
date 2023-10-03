@@ -11,10 +11,10 @@ import FirebaseFirestore
 struct MWUser: Identifiable {
     var id: String
     var name: String
-    var phone: Int
+    var phone: String
     var address: String
     
-    var representation: [String: Any] {
+    var representation: [String: Any] { // data from db Firebase
         var repres = [String: Any]()
         repres["id"] = self.id
         repres["name"] = self.name

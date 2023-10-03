@@ -9,13 +9,13 @@ import Foundation
 import FirebaseAuth
 
 class AuthService {
-    static let sharedAuth = AuthService()
+    static let sharedAuth = AuthService() // Singleton
     
     private init() {}
     
-    private let auth = Auth.auth() // List vith users
+    private let auth = Auth.auth() // List from Firebase with users
     
-    var currentUser: User? { // User - Object from Firebase
+    var currentUser: User? { // class User - Object from Firebase
         return auth.currentUser
         
     }
@@ -24,15 +24,18 @@ class AuthService {
         try! auth.signOut()
     }
     
-    func signUp(email: String, password: String, completion: @escaping(Result<User, Error>) -> Void) {
+    // signUp - registration new user
+    func signUp(email: String, password: String, completion:  @escaping(Result<User, Error>) -> Void) {
         
-        auth.createUser(withEmail: email, password: password) { result, error in
+        auth.createUser(withEmail: email, 
+                        password: password) { result, error in
             if let result = result {
-                let mwUser = MWUser(id: result.user.uid, 
+                // create user
+                let mwUser = MWUser(id: result.user.uid,
                                        name: "",
-                                       phone: 0,
+                                       phone: "",
                                        address: "")
-                
+                //send user to db
                 DBService.sharedDB.setUser(user: mwUser) { resultDataBase in
                     switch resultDataBase {
                     case .success(_):
@@ -46,7 +49,7 @@ class AuthService {
             }
         }
     }
-    
+    // signIn - authorization user
     func signIn(email: String, password: String, completion: @escaping(Result<User, Error>) -> Void) {
         auth.signIn(withEmail: email, password: password) { result, error in
             if let result = result {

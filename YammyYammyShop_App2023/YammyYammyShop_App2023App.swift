@@ -23,8 +23,8 @@ struct YammyYammyShop_App2023App: App {
                 if user.uid == "M6yPvss3nSbgW0h1d6NwM4vvAHS2" {
                     AdminOrdersView()
                 } else {
-                    let viewModel = MainTapBarViewModel(user: user)
-                    MainTapBar(viewModel: viewModel)
+                    let viewModel = MainTabBarViewModel(user: user)
+                    MainTabBar(viewModel: viewModel)
                 }
                 
             } else {
@@ -34,6 +34,7 @@ struct YammyYammyShop_App2023App: App {
     }
     
     class AppDelegate: NSObject, UIApplicationDelegate {
+        
         func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
             
             FirebaseApp.configure()
