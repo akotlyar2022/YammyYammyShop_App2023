@@ -46,15 +46,16 @@ class DBService {
         
         self.ordersRef.getDocuments { qSnap, error in
             
-            if let qSnap = qSnap { // ? qSnap ?
-                
+            if let qSnap = qSnap {
                 var orders = [Order]()
-                for doc in qSnap.documents { // ? qSnap ?
+                for doc in qSnap.documents {
+                    
+                    // if userID received - orders only for this userID
                     if let userID = userID {
                         if let order = Order(doc: doc), order.userID == userID {
                             orders.append(order)
                         }
-                    } else { // this part for admin
+                    } else { //if userID dont received - all orders for all users.  this part for admin
                         if let order = Order(doc: doc) {
                             orders.append(order)
                         }
@@ -73,8 +74,7 @@ class DBService {
             if let error = error {
                 completion(.failure(error))
             } else {
-                self.setPositions(to: order.id, // delete self
-                             positions: order.positions) { result in
+                self.setPosition(to: order.id, positions: order.positions) { result in
                     switch result {
                     case .success(let positions):
                         print(positions.count)
@@ -87,7 +87,7 @@ class DBService {
         }
     }
     
-    func setPositions(to orderId: String,
+    func setPosition(to orderId: String,
                       positions: [Position],
                       completion: @escaping (Result<[Position], Error>) -> Void) {
         
@@ -110,9 +110,9 @@ class DBService {
             }
         }
     
-    func getProfile(completion: @escaping (Result<MWUser, Error>) -> ()) {
+    func getProfile(by userId: String? = nil, completion: @escaping (Result<MWUser, Error>) -> ()) {
         
-        usersRef.document(AuthService.sharedAuth.currentUser!.uid).getDocument { docSnapshot, error in
+        usersRef.document(userId != nil ? userId! : AuthService.sharedAuth.currentUser!.uid).getDocument { docSnapshot, error in
             
                 guard let snap = docSnapshot else { return }
                 guard let data = snap.data() else { return }

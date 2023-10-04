@@ -25,10 +25,10 @@ struct PositionCell: View {
             Text("\(position.product.title)")
                 .fontWeight(.bold)
             Spacer()
-            Text("\(position.count)")
+            Text("\(position.count) boxes")
 //            Text("Price:\(position.product.price)")
             Spacer()
-            Text("\(position.cost)")
+            Text("\(position.cost) $")
                 .frame(width: 85, alignment: .trailing)
         }.padding(.horizontal)
         

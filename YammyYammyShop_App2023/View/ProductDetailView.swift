@@ -21,8 +21,10 @@ struct ProductDetailView: View {
             Spacer()
             Image(uiImage: self.viewModel.image)
                 .resizable()
-                .frame(maxWidth: .infinity, maxHeight: 300)
+                .aspectRatio(contentMode: .fill)
+                .frame(maxWidth: .infinity, maxHeight: 200)
                 .shadow(color: .orange,radius: 20)
+                .cornerRadius(30)
             Spacer()
             HStack {
                 Spacer()

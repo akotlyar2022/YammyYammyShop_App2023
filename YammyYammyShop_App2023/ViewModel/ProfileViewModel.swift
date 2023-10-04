@@ -17,13 +17,13 @@ class ProfileViewModel: ObservableObject {
         self.profile = profile
     }
     
-    func getOrders() {
-        DBService.sharedDB.getOrders(by: AuthService.sharedAuth.currentUser!.uid) { result in
+    func getOrders() { // received Order
+        DBService.sharedDB.getOrders(by:  AuthService.sharedAuth.currentUser!.accessibilityHint) { result in
             
             switch result {
             case .success(let orders):
                 self.orders = orders
-                for (index, order) in self.orders.enumerated() {
+                for (index, order) in self.orders.enumerated() { // received Positions
                     DBService.sharedDB.getPositions(by: order.id) { result in
                         switch result {
                         case .success(let positions):

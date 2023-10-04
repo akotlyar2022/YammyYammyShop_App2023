@@ -11,7 +11,7 @@ class CatalogViewModel: ObservableObject {
     
     static let shared = CatalogViewModel() // Singleton
     
-    var products = [
+    @Published var products = [
         Product(id: "001",
                 title: "Orange",
                 imageUrl: "productOrange1000",

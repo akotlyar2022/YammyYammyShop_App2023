@@ -19,8 +19,10 @@ struct ProductCell: View {
             Image(uiImage: uiImage!)
                 .resizable()
                 .aspectRatio(contentMode: .fill)
-                .frame(maxWidth: screen.width * 0.90)
-                .clipped()
+                .frame(maxWidth: screen.width * 0.8)
+                .frame(maxWidth: 300, maxHeight: 300)
+                .padding(30)
+//                .clipped()
                 .cornerRadius(30)
                 
             HStack {

@@ -12,7 +12,7 @@ struct AddProductView: View {
     @State private var showImagePicker = false
     @State private var image = UIImage(named: "addNewProduct")!
     @State private var title: String = ""
-    @State private var price: Int? = 0
+    @State private var price: Int? = nil
     @State private var description: String = ""
     @Environment (\.dismiss) var dismiss
     
@@ -55,10 +55,10 @@ struct AddProductView: View {
                 Text("Price:").font(.title2).bold()
                     .foregroundColor(.blue)
                     .padding()
-                    .keyboardType(.numberPad)
                 TextField("", value: $price, format: .number)
                     .font(.title2)
                     .frame(alignment: .leading)
+                    .keyboardType(.numberPad)
             }
             
             HStack {
@@ -79,7 +79,7 @@ struct AddProductView: View {
                 
                 let product = Product(id: UUID().uuidString, title: title, price: price, description: description)
                 
-                guard let imageData = image.jpegData(compressionQuality: 0.5) else { return }
+                guard let imageData = image.jpegData(compressionQuality: 0.2) else { return }
                 
                 DBService.sharedDB.setProduct(product: product, image: imageData) { result in
                     

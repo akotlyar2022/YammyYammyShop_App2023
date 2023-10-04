@@ -15,25 +15,25 @@ struct CatalogView: View {
     
     var body: some View {
         ScrollView(.vertical, showsIndicators: false) {
-            Section("") { // Lazy grid Horizontal "Popular"
-                ScrollView(.horizontal, showsIndicators: false) {
-                    LazyHGrid(rows: layout, spacing: 8) {
-                        ForEach(CatalogViewModel.shared.popularProducts, id: \.id) {
-                            item in
-                            
-                            NavigationLink {
-                                
-                                let viewModel = ProductDetailViewModel(product: item)
-                                ProductDetailView(viewModel: viewModel)
-                            } label: {
-                                ProductCell(product: item)
-                            }
-                        }
-                    }.padding(.bottom, 50)
-                }.shadow(color: .green, radius: 50)
-                    .border(Color.green)
-                    
-            }
+//            Section("") { // Lazy grid Horizontal "Popular"
+//                ScrollView(.horizontal, showsIndicators: false) {
+//                    LazyHGrid(rows: layout, spacing: 8) {
+//                        ForEach(CatalogViewModel.shared.popularProducts, id: \.id) {
+//                            item in
+//                            
+//                            NavigationLink {
+//                                
+//                                let viewModel = ProductDetailViewModel(product: item)
+//                                ProductDetailView(viewModel: viewModel)
+//                            } label: {
+//                                ProductCell(product: item)
+//                            }
+//                        }
+//                    }.padding(.bottom, 50)
+//                }.shadow(color: .green, radius: 50)
+//                    .border(Color.green)
+//                    
+//            }
             
             Section("") { // Lazy grid Vertical "Fruits"
                 ScrollView(.vertical, showsIndicators: false) {
@@ -48,7 +48,7 @@ struct CatalogView: View {
                             }
                         }
                     }.padding()
-                }.shadow(color: .yellow, radius: 40)
+                }.shadow(color: .orange, radius: 40)
                     .font(.title)
                     //.border(Color.black)
             }

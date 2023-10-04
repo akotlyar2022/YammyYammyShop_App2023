@@ -29,7 +29,7 @@ struct Order {
         var repres = [String: Any]()
         repres["id"] = id
         repres["userID"] = userID
-        repres["date"] = Timestamp(date: date)
+        repres["date"] = Timestamp(date: date) //internal format Date in Firebase
         repres["status"] = status
         
         return repres
@@ -57,7 +57,7 @@ struct Order {
         
         self.id = id
         self.userID = userID
-        self.date = date.dateValue()
+        self.date = date.dateValue() // for convertation from Timestamp
         self.status = status
         
     }

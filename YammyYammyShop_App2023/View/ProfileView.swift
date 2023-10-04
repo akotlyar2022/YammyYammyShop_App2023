@@ -66,7 +66,7 @@ struct ProfileView: View {
                     .font(.title2.bold())
             }.padding()
             
-            // Table with orders
+            // List with orders
             List {
                 if viewModel.orders.count == 0 {
                     Text("Your orders")

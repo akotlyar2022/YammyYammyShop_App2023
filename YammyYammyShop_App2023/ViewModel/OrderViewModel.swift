@@ -19,7 +19,7 @@ class OrderViewModel: ObservableObject {
     }
     
     func getUserData() {
-        DBService.sharedDB.getProfile { result in
+        DBService.sharedDB.getProfile(by: order.userID) { result in
             switch result {
             case .success(let user):
                 self.user = user

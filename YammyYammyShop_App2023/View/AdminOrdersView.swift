@@ -49,7 +49,7 @@ struct AdminOrdersView: View {
                 
                 Spacer()
                 Button {
-                    viewModel.getOrder()
+                    viewModel.getOrders()
                 } label: {
                     Text("Refresh")
                         .font(.title2)
@@ -72,11 +72,11 @@ struct AdminOrdersView: View {
                 }
             }.listStyle(.plain)
                 .onAppear {
-                    viewModel.getOrder()
+                    viewModel.getOrders()
                 }
                 .sheet(isPresented: $isOrderViewShow) {
-                    let viewModel = OrderViewModel(order: viewModel.currentOrder)
-                    OrderView(viewModel: viewModel)
+                    let orderViewModel = OrderViewModel(order: viewModel.currentOrder)
+                    OrderView(viewModel: orderViewModel)
                 }
         }.fullScreenCover(isPresented: $isShowAuthView) {
             AuthView()

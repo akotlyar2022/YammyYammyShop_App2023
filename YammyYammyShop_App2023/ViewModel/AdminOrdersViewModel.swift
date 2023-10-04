@@ -12,7 +12,7 @@ class AdminOrdersViewModel: ObservableObject {
     @Published var orders = [Order]()
     var currentOrder = Order(userID: "", date: Date(), status: "new")
     
-    func getOrder() {
+    func getOrders() {
         DBService.sharedDB.getOrders(by: nil) { result in
             switch result {
             case .success(let orders):

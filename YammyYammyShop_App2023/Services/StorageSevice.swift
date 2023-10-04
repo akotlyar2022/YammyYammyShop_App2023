@@ -14,11 +14,10 @@ class StorageSevice {
     
     private init () { }
     
-    private var storage = Storage.storage().reference() // from Firebase
-    private var productsRef: StorageReference {
-        storage.child("products")
-    }
+    private var storage = Storage.storage().reference() // Firebase
+    private var productsRef: StorageReference { storage.child("products") }
     
+    // Upload image to Storage
     func upload(id: String, image: Data, completion: @escaping (Result<String, Error>) -> ()) {
         let metadata = StorageMetadata()
         metadata.contentType = "image/jpg"
