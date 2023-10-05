@@ -13,10 +13,7 @@ struct CartView: View {
     
     var body: some View {
         
-        
-        
         VStack {
-            
             
             List(viewModel.positions) { position in
                 PositionCell(position: position)
@@ -29,9 +26,9 @@ struct CartView: View {
                             Text("Delete order")
                         }.tint(.red)
                     }
-            }
-            .listStyle(.sidebar)
-            .navigationTitle("Cart")
+                }
+                .listStyle(.sidebar)
+                .navigationTitle("Cart")
             
             HStack {
                 Text ("Total:")
@@ -91,6 +88,4 @@ struct CartView_Previews: PreviewProvider {
         CartView(viewModel: CartViewModel.shared)
     }
 }
-//#Preview {
-//    CartView(viewModel: CartViewModel.shared)
-//}
+

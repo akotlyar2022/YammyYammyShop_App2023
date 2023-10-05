@@ -13,7 +13,7 @@ class ProductDetailViewModel: ObservableObject {
     @Published var product: Product
     @Published var sizes = ["1 kg Box", "3 kg Box -10%", "10 kg Box -15%", "20 kg Box -20%"]
     @Published var count = 0
-    @Published var image = UIImage(named: "productOrange")!
+    @Published var image = UIImage(named: "product")!
     
     init(product: Product) {
         self.product = product
@@ -22,10 +22,11 @@ class ProductDetailViewModel: ObservableObject {
     func getPrice(size: String) -> Int {
         switch size {
         case "1 kg Box": return (product.price)
-        case "3 kg Box -10%": return ((product.price)/100) * 90 * 3
-        case "10 kg Box -15%": return ((product.price)/100) * 85 * 10
-        case "20 kg Box -20%": return ((product.price)/100) * 80 * 20
-        default: return 0
+            // feachure for next period
+//        case "3 kg Box -10%": return ((product.price)/100) * 90
+//        case "10 kg Box -15%": return ((product.price)/100) * 85
+//        case "20 kg Box -20%": return ((product.price)/100) * 80
+        default: return (product.price)
         }
     }
     func getImage() {

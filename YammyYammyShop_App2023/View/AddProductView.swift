@@ -105,13 +105,6 @@ struct AddProductView: View {
     }
 }
 
-//struct AddProductView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        AddProductView()
-//    }
-//}
-
-
 #Preview {
     AddProductView()
 }

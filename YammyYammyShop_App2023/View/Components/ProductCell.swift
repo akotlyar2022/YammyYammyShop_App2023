@@ -11,36 +11,31 @@ struct ProductCell: View {
     
     var product: Product
     
-    @State var uiImage = UIImage(named: "productOrange")
+    @State var uiImage = UIImage(named: "product")
     
     var body: some View {
         
         VStack {
             Image(uiImage: uiImage!)
                 .resizable()
-                .aspectRatio(contentMode: .fill)
-                .frame(maxWidth: screen.width * 0.8)
-                .frame(maxWidth: 300, maxHeight: 300)
-                .padding(30)
-//                .clipped()
                 .cornerRadius(30)
+                .aspectRatio(contentMode: .fill)
+                .frame(maxWidth: screen.width * 0.5)
+                .frame(maxWidth: 500, maxHeight: 500)
+                .clipped()
+                
                 
             HStack {
                 Text("\(product.title)")
-                    .font(.custom("AvenirNext-bold", size: 20))
+                    .font(.title2).bold()
                     .foregroundColor(.blue)
 
                 Spacer()
                 Text("\(product.price) $")
-                    .font(.custom("AvenirNext-bold", size: 20))
+                    .font(.title2).bold()
                     .foregroundColor(.green)
-                //Text(product.description)
             }
             .padding(.horizontal, 40)
-//            Text("\(product.description)")
-//                .padding(.horizontal, 30)
-//                .padding(.vertical, 20)
-//                .font(.title2)
                 
         }.frame(width: screen.width * 0.95, height: screen.height * 0.35)
             .onAppear {
@@ -53,9 +48,9 @@ struct ProductCell: View {
                         }
                     case .failure(let error):
                         print(error.localizedDescription)
-                    }
                 }
             }
+        }
     }
 }
 

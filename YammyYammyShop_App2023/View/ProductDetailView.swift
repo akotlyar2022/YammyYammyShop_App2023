@@ -21,19 +21,20 @@ struct ProductDetailView: View {
             Spacer()
             Image(uiImage: self.viewModel.image)
                 .resizable()
-                .aspectRatio(contentMode: .fill)
-                .frame(maxWidth: .infinity, maxHeight: 200)
-                .shadow(color: .orange,radius: 20)
                 .cornerRadius(30)
+                .aspectRatio(contentMode: .fill)
+                .frame(maxWidth: screen.width * 0.5)
+                .frame(maxWidth: 500, maxHeight: 500)
+                .animation(.easeOut(duration: 1))
             Spacer()
             HStack {
                 Spacer()
                 Text("\(viewModel.product.title)")
-                    .font(.title2.bold())
+                    .font(.title.bold())
                     .foregroundColor(/*@START_MENU_TOKEN@*/.blue/*@END_MENU_TOKEN@*/)
                 Spacer()
-                    Text("Price: \(viewModel.getPrice(size: self.size))")
-                        .font(.title2.bold())
+                    Text("Price: \(viewModel.getPrice(size: self.size)) $")
+                        .font(.title.bold())
                         .foregroundColor(.green)
                     
                 
@@ -41,7 +42,7 @@ struct ProductDetailView: View {
             }
             Spacer()
             Text("\(viewModel.product.description)")
-                .font(.title)
+                .font(.title2)
                 .foregroundColor(.black)
                 .padding()
             Spacer()
@@ -50,6 +51,7 @@ struct ProductDetailView: View {
                 Picker("BoxSize", selection: $size) {
                     ForEach(viewModel.sizes, id: \.self) { item in
                         Text(item)
+                            .font(.title3)
                     }
                 }.pickerStyle(.menu)
                     .padding(4)
@@ -63,7 +65,7 @@ struct ProductDetailView: View {
             .padding()
                 Spacer()
             
-            Text("Total: \(viewModel.getPrice(size: self.size) * count)")
+            Text("Total: \(viewModel.getPrice(size: self.size) * count) $")
                 .font(.title2.bold())
                 .foregroundColor(.red)
             
@@ -77,10 +79,6 @@ struct ProductDetailView: View {
                     presentationMode.wrappedValue.dismiss() // close view vith enviroment property
                 } label: {
                     Text("Add to cart")
-//                        .padding()
-//                        .cornerRadius(10)
-//                        .foregroundColor(.blue)
-//                        .font(.title.bold())
                         .font(.title)
                         .fontWeight(.bold)
                         .padding()

@@ -23,7 +23,6 @@
 		FA33B8B02ABF453700EC7461 /* CartViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA33B8AF2ABF453600EC7461 /* CartViewModel.swift */; };
 		FA33B8B22ABF457900EC7461 /* Position.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA33B8B12ABF457900EC7461 /* Position.swift */; };
 		FA33B8B42ABF53D800EC7461 /* PositionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA33B8B32ABF53D800EC7461 /* PositionCell.swift */; };
-		FA33B8B62AC02A7E00EC7461 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FA33B8B52AC02A7C00EC7461 /* GoogleService-Info.plist */; };
 		FA33B8B92AC02D9B00EC7461 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = FA33B8B82AC02D9B00EC7461 /* FirebaseAnalytics */; };
 		FA33B8BB2AC02D9B00EC7461 /* FirebaseAnalyticsOnDeviceConversion in Frameworks */ = {isa = PBXBuildFile; productRef = FA33B8BA2AC02D9B00EC7461 /* FirebaseAnalyticsOnDeviceConversion */; };
 		FA33B8BD2AC02D9B00EC7461 /* FirebaseAnalyticsSwift in Frameworks */ = {isa = PBXBuildFile; productRef = FA33B8BC2AC02D9B00EC7461 /* FirebaseAnalyticsSwift */; };
@@ -55,6 +54,7 @@
 		FA33B8F22AC04EE400EC7461 /* MainTabBarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA33B8F12AC04EE300EC7461 /* MainTabBarViewModel.swift */; };
 		FA33B8F42AC0778100EC7461 /* MWUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA33B8F32AC0778100EC7461 /* MWUser.swift */; };
 		FA33B8F62AC0794700EC7461 /* DBService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA33B8F52AC0794700EC7461 /* DBService.swift */; };
+		FA9A6A942ACF5E9300FC503D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FA9A6A932ACF5E9300FC503D /* GoogleService-Info.plist */; };
 		FAA95DF82AC743C600697773 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA95DF72AC743C600697773 /* ImagePicker.swift */; };
 		FAA95DFA2AC7476800697773 /* AddProductView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA95DF92AC7476800697773 /* AddProductView.swift */; };
 		FAA95DFC2AC7697800697773 /* StorageSevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA95DFB2AC7697800697773 /* StorageSevice.swift */; };
@@ -86,11 +86,11 @@
 		FA33B8AF2ABF453600EC7461 /* CartViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartViewModel.swift; sourceTree = "<group>"; };
 		FA33B8B12ABF457900EC7461 /* Position.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Position.swift; sourceTree = "<group>"; };
 		FA33B8B32ABF53D800EC7461 /* PositionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PositionCell.swift; sourceTree = "<group>"; };
-		FA33B8B52AC02A7C00EC7461 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		FA33B8EE2AC0327100EC7461 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
 		FA33B8F12AC04EE300EC7461 /* MainTabBarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarViewModel.swift; sourceTree = "<group>"; };
 		FA33B8F32AC0778100EC7461 /* MWUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MWUser.swift; sourceTree = "<group>"; };
 		FA33B8F52AC0794700EC7461 /* DBService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBService.swift; sourceTree = "<group>"; };
+		FA9A6A932ACF5E9300FC503D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../GoogleService-Info.plist"; sourceTree = "<group>"; };
 		FAA95DF72AC743C600697773 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		FAA95DF92AC7476800697773 /* AddProductView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddProductView.swift; sourceTree = "<group>"; };
 		FAA95DFB2AC7697800697773 /* StorageSevice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageSevice.swift; sourceTree = "<group>"; };
@@ -167,7 +167,7 @@
 				FA33B8A72ABEE3FE00EC7461 /* Model */,
 				FA33B8A12ABECA0000EC7461 /* View */,
 				FA21F5772ABD920700ADFEEE /* Assets.xcassets */,
-				FA33B8B52AC02A7C00EC7461 /* GoogleService-Info.plist */,
+				FA9A6A932ACF5E9300FC503D /* GoogleService-Info.plist */,
 				FA21F5792ABD920700ADFEEE /* Preview Content */,
 			);
 			path = YammyYammyShop_App2023;
@@ -344,8 +344,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				FA21F57B2ABD920700ADFEEE /* Preview Assets.xcassets in Resources */,
+				FA9A6A942ACF5E9300FC503D /* GoogleService-Info.plist in Resources */,
 				FA21F5782ABD920700ADFEEE /* Assets.xcassets in Resources */,
-				FA33B8B62AC02A7E00EC7461 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

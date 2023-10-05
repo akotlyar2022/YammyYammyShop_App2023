@@ -128,7 +128,6 @@ struct AuthView: View {
                         .padding(10)
                         .padding(.horizontal, 12)
                 }
-                
             }
             .padding()
             .padding(.top, 20)
@@ -148,22 +147,15 @@ struct AuthView: View {
             .animation(Animation.easeInOut(duration: 0.5), value: isAuth)
             .fullScreenCover(isPresented: $isTabViewShow) { // perehod na MainTabBar
                 
-                if AuthService.sharedAuth.currentUser?.uid == "M6yPvss3nSbgW0h1d6NwM4vvAHS2" {
+                if AuthService.sharedAuth.currentUser?.uid == "dFgMvyuMPiRHdLXqJlqFXK1AQBM2" {
                     AdminOrdersView()
                 } else {
                     let mainTabBarViewModel = MainTabBarViewModel(user: AuthService.sharedAuth.currentUser!)
                     MainTabBar(viewModel: mainTabBarViewModel)
-                }
             }
+        }
     }
 }
-
-//struct ContentView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        AuthView()
-//    }
-//}
-
 
 #Preview {
     AuthView()

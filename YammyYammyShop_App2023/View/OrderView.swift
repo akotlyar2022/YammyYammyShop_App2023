@@ -66,11 +66,6 @@ struct OrderView: View {
     }
 }
 
-//struct OrderView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        OrderView(viewModel: OrderViewModel(order: Order(userID: "", date: Date(), status: "new")))
-//    }
-//}
 
 #Preview {
     OrderView(viewModel: OrderViewModel(order: Order(userID: "", date: Date(), status: "new")))
